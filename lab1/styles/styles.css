@@ -1,0 +1,315 @@
+.header {}
+
+.layout {
+    width: 82%;
+    padding-left: 9%;
+    padding-right: 9%;
+}
+
+/* Navbar */
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 96px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(38, 50, 56, 0.16);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.2px;
+}
+
+.navbar__container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.logo {
+    display: flex;
+    cursor: pointer;
+}
+
+.logo__container {
+    display: flex;
+    align-items: center;
+}
+
+.logo__title {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -1px;
+    color: #2D3436;
+}
+
+.nav__links {
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;
+}
+
+
+
+.nav__link {}
+
+.active {
+    color: #2D3436;
+
+}
+
+.unactive {
+    font-weight: 400;
+    color: #6C5CE7;
+}
+
+.signIn {
+    width: 170px;
+    height: 64px;
+    background: #2D3436;
+    border: none;
+    border-radius: 999px;
+
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.dot {
+    color: #FDCB6E;
+}
+
+.dropMenu {
+    display: none;
+}
+
+.dropMenu__button {
+    display: none;
+    border: none;
+    background: #FFFFFF;
+}
+
+.header__content {
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #2D3436;
+
+    padding-top: 80px
+}
+
+.header__title {
+    text-align: center;
+    font-weight: 800;
+    font-size: 96px;
+    line-height: 104px;
+    letter-spacing: -3px;
+    text-shadow: 0px 4px 0px #FFFFFF;
+}
+
+.header__subtitle {
+    text-align: center;
+    font-weight: 900;
+    font-size: 64px;
+    line-height: 77px;
+    letter-spacing: -1px;
+}
+
+.header__fine {
+    display: inline-block;
+    position: relative;
+    color: #E84393;
+}
+
+.header__fine::after {
+    content: '';
+    display: block;
+    width: 191px;
+    height: 51px;
+    background: #55EFC4;
+    border-radius: 999px;
+    z-index: -1;
+
+    position: absolute;
+    left: -4.5%;
+    top: 59%;
+}
+
+.gridTiles {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 32px;
+    color: #2D3436;
+
+    margin-top: 64px;
+
+    display: grid;
+    grid-gap: 30px;
+    width: 100%;
+    grid-template-columns: 270fr 240fr 200fr 170fr 170fr;
+    grid-template-rows: 102px 26px 222px 172px 20px 62px 72px;
+    grid-template-areas:
+        "text green green text2 text2"
+        "yellow green green text2 text2"
+        "yellow green green pearl blue"
+        "yellow pink purple purple orange"
+        "button pink purple purple orange"
+        "button pink purple purple cell1"
+        "cell2 cell3 purple purple e7";
+
+}
+
+.gridText {
+    grid-area: text;
+}
+
+.gridText-2 {
+    display: flex;
+    align-items: flex-end;
+    grid-area: text2;
+}
+
+.gridYellow {
+    grid-area: yellow;
+    background-color: #FDCB6E;
+    border-radius: 10px;
+    padding: 32px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.2px;
+}
+
+.gridYellow__subtext {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.gridGreen {
+    grid-area: green;
+    background-color: #00B894;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+}
+
+.gridPink {
+    grid-area: pink;
+    background-color: #E84393;
+    border-radius: 10px;
+}
+
+.gridPurple {
+    grid-area: purple;
+    background-color: #6C5CE7;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: -1px;
+    color: #FFFFFF;
+
+}
+
+.greadPearl {
+    grid-area: pearl;
+    background-color: #A29BFE;
+    border-radius: 10px;
+}
+
+.gridBlue {
+    background: url('../public/nike.svg') 50%/cover no-repeat;
+    border-radius: 10px;
+    grid-area: blue;
+}
+
+.gridOrange {
+    grid-area: orange;
+    background-color: #FF7675;
+    border-radius: 10px;
+}
+
+.gridButton {
+    grid-area: button;
+    background: #FFFFFF;
+    border-radius: 999px;
+    box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1), 0px 16px 32px rgba(38, 50, 56, 0.08);
+    border: none;
+
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    color: #6C5CE7;
+}
+
+.header__background {
+    display: flex;
+    justify-content: right;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.mainBackground {
+    opacity: 0.4;
+    position: relative;
+    z-index: -2;
+}
+
+.dotBackground {
+    position: absolute;
+    z-index: -2;
+    top: 15%;
+}
+
+@media screen and (max-width: 992px) {
+    .nav__links {
+        visibility: hidden;
+    }
+
+    .logo__title {
+        font-size: 24px;
+        color: #5C5C5C;
+    }
+
+    .logo__img {
+        display: none;
+    }
+
+    .signIn {
+        box-shadow: 0px 2px 4px rgba(38, 50, 56, 0.16), 0px 4px 8px rgba(38, 50, 56, 0.08);
+        border-radius: 8px;
+        letter-spacing: 0.2px;
+        font-size: 18px;
+        width: 128px;
+        height: 40px;
+    }
+
+    .dropMenu__button {
+        display: block;
+    }
+}
