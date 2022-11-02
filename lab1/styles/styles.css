@@ -86,7 +86,6 @@
     font-weight: 700;
     cursor: pointer;
 }
-
 .dot {
     color: #FDCB6E;
 }
@@ -475,7 +474,7 @@
     letter-spacing: -0.5px;
 }
 
-.benefits__discription{
+.benefits__discription {
     width: 80%;
     padding-top: 15px;
     font-weight: 400;
@@ -485,24 +484,24 @@
     margin-bottom: 40px;
 }
 
-.benefits__container{
+.benefits__container {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.benefits__elem{
+.benefits__elem {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 22%;
 }
 
-.benefits__elem:last-child{
+.benefits__elem:last-child {
     margin-right: 0px;
 }
 
-.benefits__icon{
+.benefits__icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -513,24 +512,24 @@
     border-radius: 999px;
 }
 
-.benefits__icon.pink{
+.benefits__icon.pink {
     background: #E84393;
 }
 
-.benefits__icon.blue{
+.benefits__icon.blue {
     background: #0984E3;
 }
 
-.benefits__icon.purple{
+.benefits__icon.purple {
     background: #6C5CE7;
 }
 
-.benefits__icon.green{
+.benefits__icon.green {
     background: #00B894;
 }
 
 
-.benefits__elem__title{
+.benefits__elem__title {
     display: inline-block;
     margin-top: 24px;
     margin-bottom: 16px;
@@ -540,13 +539,13 @@
     letter-spacing: 0.25px;
 }
 
-.benefits__elem__discription{
+.benefits__elem__discription {
     font-weight: 400;
     font-size: 18px;
     line-height: 32px;
 }
 
-.benefits__elem__button{
+.benefits__elem__button {
     cursor: pointer;
     width: 146px;
     height: 48px;
@@ -563,10 +562,204 @@
     transition: 0.2s all;
 }
 
-.benefits__elem__button:hover{
+.benefits__elem__button:hover {
     background: #6C5CE7;
     color: #FFFFFF;
     transition: 0.2s all;
+}
+
+.footer {
+    margin-top: 160px;
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    color: #2D3436;
+}
+
+.footer__title {
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #ADADAD;
+}
+
+.footer__container {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    justify-content: space-between;
+}
+
+.contacts {
+    margin-top: 8px;
+    margin-bottom: 40px;
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+
+.contacts__elem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 99px;
+
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    transition: 0.2s all;
+    background: #FFFFFF;
+}
+
+.contacts__elem:hover {
+    background: #FFEAA7;
+    transition: 0.2s all;
+}
+
+.email {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: -0.5px;
+    color: #6C5CE7;
+}
+
+.information {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 33% 33% 33%;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.25px;
+}
+
+.information__elem {
+    margin-top: 16px;
+}
+
+.information__elem span {
+    cursor: pointer;
+}
+
+.inputs__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input__block {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    width: 47.36%;
+    align-items: center;
+    background: rgba(194, 194, 194, 0.24);
+    border-radius: 16px;
+    margin-top: 16px;
+    margin-bottom: 30px;
+}
+
+
+.input {
+    flex-grow: 1;
+    background: none;
+    border: none;
+    height: 32px;
+    margin-left: 3%;
+    width: 100%;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    color: #2D3436;
+}
+
+.input__image {
+    width: 40px;
+    height: 40px;
+}
+
+.input:focus {
+    border: none;
+    outline: 0;
+}
+
+.input::placeholder {
+    color: #2D3436;
+}
+
+.textInput {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.2px;
+    color: #6C5CE7;
+
+    padding: 16px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    resize: none;
+    background: rgba(194, 194, 194, 0.24);
+    width: 65%;
+    height: 80px;
+    border: 2px solid rgba(194, 194, 194, 0);
+    transition: 0.2s all;
+}
+
+.textInput:focus {
+    transition: 0.2s all;
+    border: 2px solid #6C5CE7;
+    outline: 0;
+}
+
+.textInput::placeholder {
+    color: #6C5CE7;
+    align-items: center;
+    background: url('../public/icon-edit.svg') no-repeat;
+    background-position: right;
+}
+
+.submitButton {
+    cursor: pointer;
+    height: 80px;
+    width: 30%;
+    background: #6C5CE7;
+    box-shadow: 0px 8px 24px rgba(38, 50, 56, 0.1), 0px 16px 32px rgba(38, 50, 56, 0.08);
+    border-radius: 16px;
+    border: none;
+
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    letter-spacing: 0.25px;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 4px rgba(38, 50, 56, 0.16), 0px 4px 8px rgba(38, 50, 56, 0.08);
+    text-transform: uppercase;
+    transition: 0.2s all;
+}
+
+.submitButton:active{
+    background: #5144af;
+    transition: 0.2s all;
+}
+
+.wave__container{
+    position: relative;
+    width: 100%;
+}
+
+.wave{
+    margin-top: 40px;
+    position: absolute;
+    top: 1%;
+    width: 100%;
 }
 
 @media screen and (max-width: 992px) {
