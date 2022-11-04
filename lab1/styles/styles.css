@@ -63,9 +63,15 @@ body {
     justify-content: space-evenly;
 }
 
+.close{
+    display: none;
+    padding: 10px;
+    border-radius: 14px;
+    background-color: #FF7675;
+}
+
 .active {
     color: #2D3436;
-
 }
 
 .unactive {
@@ -823,6 +829,23 @@ body {
 
 @media screen and (max-width: 992px) {
     .nav__links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        background: rgba(255, 255, 255, 0.95);
+        width: 100vw;
+        height: 100vh;
+        z-index: 3;
+    }
+
+    .close{
+        display: block;
+    }
+
+    .dot{
         display: none;
     }
 
