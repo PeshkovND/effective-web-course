@@ -11,13 +11,13 @@
 
 <body>
     <div class="timer">
-        <input type="number" placeholder="Минуты"> <span>:</span>
-        <input type="number" placeholder="Секунды">
+        <input class="input" type="number" value=0><span>:</span>
+        <input class="input" type="number" value=0>
     </div>
     <div class="control_panel">
-        <button>Старт</button>
-        <button>Стоп</button>
-        <button>Ресет</button>
+        <button id="start" onclick="start()">Старт</button>
+        <button id="stop" onclick="stop()">Стоп</button>
+        <button id="reset" onclick="reset()">Ресет</button>
     </div>
 </body>
 <script src="./index.js"></script>
