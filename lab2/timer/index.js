@@ -8,6 +8,31 @@ const defaultColor = 'rgb(255, 255, 255)', finishColor = 'red';
 const music = new Audio("./public/music.mp3");
 music.loop = true;
 
+let storageMinutes = localStorage.getItem('min')
+let storageSeconds = localStorage.getItem('sec')
+let state = localStorage.getItem('state');
+
+inputs[0].addEventListener('input', () => {
+    localStorage.setItem('min', inputs[0].value);
+})
+inputs[1].addEventListener('input', () => {
+    localStorage.setItem('sec', inputs[1].value);
+})
+
+if (!storageMinutes && !storageSeconds) {
+    setTime(0, 0);
+} else {
+    setTime(storageMinutes, storageSeconds);
+    switch (state) {
+        case "start": start();
+            break;
+        case "stop": stop();
+            break;
+        case "ring": ring();
+            break
+    }
+}
+
 function step() {
     const time = getTime();
     let seconds = toSeconds(time[0], time[1]);
@@ -31,6 +56,7 @@ function validateTime(min, sec) {
 }
 
 function start() {
+    localStorage.setItem('state', 'start');
     music.currentTime = 0;
     validateTime(inputs[0].value, inputs[1].value)
     if (inputs[0].value === '0' && inputs[1].value === '0') {
@@ -45,12 +71,16 @@ function start() {
 }
 
 function stop() {
+    localStorage.setItem('state', 'stop');
     clearInterval(timer);
+    lockInputs(true);
+    lockTimesButtons(true);
     startButton.disabled = false
     stopButton.disabled = true
 }
 
 function reset() {
+    localStorage.removeItem('state');
     music.pause()
     clearInterval(timer);
     lockTimesButtons(false);
@@ -65,6 +95,8 @@ function getTime() {
 }
 
 function setTime(min, sec) {
+    localStorage.setItem('min', min);
+    localStorage.setItem('sec', sec);
     inputs[0].value = min;
     inputs[1].value = sec;
 }
@@ -94,6 +126,9 @@ function lockTimesButtons(value) {
 }
 
 function ring() {
+    localStorage.setItem('state', 'ring');
+    lockInputs(true);
+    lockTimesButtons(true);
     music.play()
     document.body.style.backgroundColor = finishColor;
     clearInterval(timer);
