@@ -4,16 +4,15 @@ let startButton = document.getElementById("start");
 let stopButton = document.getElementById("stop");
 let resetButton = document.getElementById("reset");
 const defaultColor = 'rgb(255, 255, 255)', finishColor = 'red';
+const music = new Audio("./public/music.mp3");
+music.loop = true;
 
 function step() {
     const time = getTime();
     let seconds = toSeconds(time[0], time[1]);
     --seconds;
     if (seconds <= 0) {
-        document.body.style.backgroundColor = finishColor;
-        clearInterval(timer);
-        setTime(0, 0);
-        lockButtons(true);
+        ring()
     } else {
         const remaingTime = toMinAndSeconds(seconds);
         setTime(remaingTime[0], remaingTime[1]);
@@ -31,6 +30,7 @@ function validateTime(min, sec) {
 }
 
 function start() {
+    music.currentTime = 0;
     validateTime(inputs[0].value, inputs[1].value)
     if (inputs[0].value === '0' && inputs[1].value === '0') {
         alert("Введите корректное время")
@@ -49,6 +49,7 @@ function stop() {
 }
 
 function reset() {
+    music.pause()
     clearInterval(timer);
     lockInputs(false);
     lockButtons(false);
@@ -81,4 +82,12 @@ function lockInputs(value) {
 function lockButtons(value) {
     startButton.disabled = value;
     stopButton.disabled = value;
+}
+
+function ring() {
+    music.play()
+    document.body.style.backgroundColor = finishColor;
+    clearInterval(timer);
+    setTime(0, 0);
+    lockButtons(true);
 }
