@@ -1,5 +1,6 @@
 let timer;
 let inputs = document.querySelectorAll(".input");
+let timesButtons = document.querySelectorAll(".times_panel button");
 let startButton = document.getElementById("start");
 let stopButton = document.getElementById("stop");
 let resetButton = document.getElementById("reset");
@@ -36,7 +37,8 @@ function start() {
         alert("Введите корректное время")
         return
     }
-    lockInputs(true)
+    lockInputs(true);
+    lockTimesButtons(true);
     startButton.disabled = true;
     stopButton.disabled = false;
     timer = setInterval(() => step(), 1000);
@@ -51,6 +53,7 @@ function stop() {
 function reset() {
     music.pause()
     clearInterval(timer);
+    lockTimesButtons(false);
     lockInputs(false);
     lockButtons(false);
     setTime(0, 0);
@@ -82,6 +85,12 @@ function lockInputs(value) {
 function lockButtons(value) {
     startButton.disabled = value;
     stopButton.disabled = value;
+}
+
+function lockTimesButtons(value) {
+    timesButtons[0].disabled = value
+    timesButtons[1].disabled = value
+    timesButtons[2].disabled = value
 }
 
 function ring() {
