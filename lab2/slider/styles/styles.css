@@ -1,0 +1,60 @@
+:root {
+    --white: rgba(255, 255, 255, 0.1);
+    --hoverWhite: rgba(255, 255, 255, 0.6);
+}
+
+.slider {
+    position: relative;
+    margin: 100px auto;
+    width: 900px;
+    height: 506px;
+}
+
+.slider_elem {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 0.2s ease all;
+}
+
+.button {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    height: 100%;
+    background-color: var(--white);
+    width: 50px;
+    z-index: 1;
+    transition: 0.2s all;
+}
+
+.button:hover {
+    transition: 0.2s all;
+    background-color: var(--hoverWhite);
+}
+
+.button img {
+    width: 100%
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.button.right img {
+    rotate: 180deg;
+}
+
+.opacity0 {
+    opacity: 0;
+}
