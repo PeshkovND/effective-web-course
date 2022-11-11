@@ -2,7 +2,8 @@ if (!localStorage.getItem('step')) {
     localStorage.setItem('step', '0')
 }
 
-let images = document.querySelectorAll('.slider_elem')
+const images = document.querySelectorAll('.slider_elem');
+const seconds = 4000;
 
 function changeClass() {
     for (let i = 0; i < images.length; i++) {
@@ -12,11 +13,11 @@ function changeClass() {
 }
 
 changeClass()
-let timeout = setTimeout(() => step(1), 4000)
+let timeout = setTimeout(() => step(1), seconds)
 
 function step(increment) {
     clearTimeout(timeout)
-    timeout = setTimeout(() => step(1), 4000)
+    timeout = setTimeout(() => step(1), seconds)
     let current = Number(localStorage.getItem('step'))
     current += increment;
 

@@ -1,16 +1,17 @@
 let timer;
-let inputs = document.querySelectorAll(".input");
-let timesButtons = document.querySelectorAll(".times_panel button");
-let startButton = document.getElementById("start");
-let stopButton = document.getElementById("stop");
-let resetButton = document.getElementById("reset");
-const defaultColor = 'rgb(255, 255, 255)', finishColor = 'red';
+const inputs = document.querySelectorAll(".input");
+const timesButtons = document.querySelectorAll(".times_panel button");
+const startButton = document.getElementById("start");
+const stopButton = document.getElementById("stop");
+const resetButton = document.getElementById("reset");
+const defaultColor = 'rgb(255, 255, 255)'
+const finishColor = 'red';
 const music = new Audio("./public/music.mp3");
 music.loop = true;
 
-let storageMinutes = localStorage.getItem('min')
-let storageSeconds = localStorage.getItem('sec')
-let state = localStorage.getItem('state');
+const storageMinutes = localStorage.getItem('min')
+const storageSeconds = localStorage.getItem('sec')
+const state = localStorage.getItem('state');
 
 inputs[0].addEventListener('input', () => {
     localStorage.setItem('min', inputs[0].value);
@@ -39,10 +40,11 @@ function step() {
     --seconds;
     if (seconds <= 0) {
         ring()
-    } else {
-        const remaingTime = toMinAndSeconds(seconds);
-        setTime(remaingTime[0], remaingTime[1]);
-    }
+        return
+    } 
+    const remaingTime = toMinAndSeconds(seconds);
+    setTime(remaingTime[0], remaingTime[1]);
+    
 }
 
 function validateTime(min, sec) {
