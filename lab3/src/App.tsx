@@ -3,27 +3,12 @@ import './App.css';
 import React, { ReactElement } from 'react';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-import { Chartacters } from './pages/characters';
-import { Comics } from './pages/comics';
-import { Series } from './pages/series';
+import { routes } from './routes';
 
 function App(): ReactElement {
-  const routes: RouteObject[] = [
-    {
-      path: '/characters',
-      element: <Chartacters />
-    },
-    {
-      path: '/comics',
-      element: <Comics />
-    },
-    {
-      path: '/series',
-      element: <Series />
-    }
-  ];
+  const routing: RouteObject[] = routes;
 
-  const element = useRoutes(routes);
+  const element = useRoutes(routing);
 
   return (
     <div className="App">
