@@ -1,4 +1,4 @@
-.headerContainer{
+.headerContainer {
     display: flex;
     background-color: red;
     justify-content: space-between;
@@ -6,32 +6,32 @@
     align-items: center;
 }
 
-.logoContainer{
+.logoContainer {
     width: 100px;
 }
 
-.logo{
+.logo {
     width: 100%;
 }
 
-.nav{
+.nav {
     font-size: 20px;
     color: rgb(255, 204, 0);
 }
 
-.navItem{
+.navItem {
     margin-left: 15px;
     cursor: pointer;
     transition: 0.2s all;
 }
 
-.navItem:hover{
+.navItem:hover {
     color: white;
     transition: 0.2s all;
 }
 
 @media screen and (max-width: 700px) {
-    .headerContainer{
+    .headerContainer {
         flex-direction: column;
     }
 }
