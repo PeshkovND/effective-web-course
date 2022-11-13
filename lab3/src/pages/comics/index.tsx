@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
+import { Post } from 'types/post';
 import { Card } from '../../components/card';
 import { Searcher } from '../../components/searcher';
 import styles from '../pages.module.css';
 
 export const Comics = (): ReactElement => {
-  const comics = [
+  const comics: Post[] = [
     {
       id: 0,
       name: 'Captain America/Iron Man (2021 - 2022)',

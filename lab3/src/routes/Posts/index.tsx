@@ -15,7 +15,7 @@ const Posts: FC = () => {
     <div>
       {loading ? 'Loading...' : null}
       {posts.map((post) => (
-        <div key={post.id}>{post.title}</div>
+        <div key={post.id}>{post.name}</div>
       ))}
     </div>
   );

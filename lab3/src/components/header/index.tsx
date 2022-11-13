@@ -10,7 +10,6 @@ export const Header = (): ReactElement => {
       </div>
       <nav className={styles.nav}>
         <NavLink className={styles.navItem} to="/">
-          {' '}
           Chartacters
         </NavLink>
         <NavLink className={styles.navItem} to="/comics">
