@@ -16,13 +16,14 @@
 
 .nav {
     font-size: 20px;
-    color: rgb(255, 204, 0);
 }
 
 .navItem {
     margin-left: 15px;
     cursor: pointer;
     transition: 0.2s all;
+    text-decoration: none;
+    color: rgb(255, 204, 0);
 }
 
 .navItem:hover {

@@ -80,3 +80,11 @@ select {
 body {
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+
+.active {
+  border-bottom: 3px solid rgb(255, 204, 0);
+}
+
+.active:hover {
+  border-bottom: 3px solid white;
+}
