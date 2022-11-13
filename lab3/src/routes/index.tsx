@@ -12,7 +12,7 @@ export const routes: RouteObject[] = [
     element: <div>Not Found</div>
   },
   {
-    path: '/characters',
+    path: '/',
     element: <Chartacters />
   },
   {

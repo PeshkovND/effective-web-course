@@ -9,7 +9,7 @@ export const Header = (): ReactElement => {
         <img src="/marvel_logo.svg" className={styles.logo} alt="Marvel" />
       </div>
       <nav className={styles.nav}>
-        <NavLink className={styles.navItem} to="/characters">
+        <NavLink className={styles.navItem} to="/">
           {' '}
           Chartacters
         </NavLink>
