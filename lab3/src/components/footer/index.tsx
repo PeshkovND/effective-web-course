@@ -9,7 +9,7 @@ export const Footer = (): ReactElement => {
       <div className={styles.logoContainer}>
         <img src="/marvel_logo.svg" className={styles.logo} alt="Marvel" />
       </div>
-      <p>Data provided by Marvel. ©{CURRENT_YEAR}MARVEL</p>
+      <p>Data provided by Marvel. © {CURRENT_YEAR} MARVEL</p>
       <a
         href="https://developer.marvel.com/"
         className={styles.link}
