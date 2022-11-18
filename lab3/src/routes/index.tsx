@@ -5,6 +5,7 @@ import { Series } from 'pages/series';
 import React from 'react';
 import { CharactersDetails } from 'pages/details/charactersDetails';
 import { ComicsDetails } from 'pages/details/comicsDetails';
+import { SeriesDetails } from 'pages/details/seriesDetails';
 
 // В этом файле массив со всем путями / роутами приложения
 
@@ -35,6 +36,12 @@ export const routes: RouteObject[] = [
   },
   {
     path: '/series',
-    element: <Series />
+    children: [
+      { index: true, element: <Series /> },
+      {
+        path: '/series/:id',
+        element: <SeriesDetails />
+      }
+    ]
   }
 ];
