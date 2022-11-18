@@ -14,18 +14,20 @@ export const CharactersDetails = (): ReactElement => {
   if (!character) return <div>Character not found</div>;
 
   return (
-    <div className={styles.mainInfoContainer}>
-      <div className={styles.imageContainer}>
-        <img className={styles.img} src={character.img} alt="" />
+    <div className={styles.infoContainer}>
+      <div className={styles.mainInfoContainer}>
+        <div className={styles.imageContainer}>
+          <img className={styles.img} src={character.img} alt="" />
+        </div>
+        <div>
+          <h2 className={styles.heading}>{character.name}</h2>
+          <p>{character.disc}</p>
+        </div>
       </div>
-      <div>
-        <h2 className={styles.heading}>{character.name}</h2>
-        <p>{character.disc}</p>
-      </div>
-      <div>
+      <div className={styles.linksContainer}>
         <h2 className={styles.heading}>Comics</h2>
       </div>
-      <div>
+      <div className={styles.linksContainer}>
         <h2 className={styles.heading}>Series</h2>
       </div>
     </div>

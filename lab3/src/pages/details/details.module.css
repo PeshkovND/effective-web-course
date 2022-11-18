@@ -1,14 +1,22 @@
+.infoContainer{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .mainInfoContainer{
     display: flex;
+    width: 60%;
 }
 
 .imageContainer {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 200px;
+    max-width: 200px;
     border-radius: 15px;
-    height: 350px;
+    height: 300px;
     overflow: hidden;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .img {
@@ -20,4 +28,42 @@
 
 .heading{
     color: red;
+}
+
+.linksContainer{
+    width: 20%;
+    margin-left: 3%;
+}
+
+
+@media screen and (max-width: 768px) {
+    .mainInfoContainer{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .linksContainer{
+        width: 100%;
+        margin-left: 3%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .infoContainer {
+        flex-direction: column;
+    }
+
+    .mainInfoContainer{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading{
+        text-align: center;
+    }
+
+    .linksContainer{
+        margin-left: 0%;
+    }
 }
