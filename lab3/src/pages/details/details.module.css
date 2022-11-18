@@ -35,6 +35,11 @@
     margin-left: 3%;
 }
 
+.link{
+    display: block;
+    color: rgb(53, 53, 210);
+}
+
 
 @media screen and (max-width: 768px) {
     .mainInfoContainer{
