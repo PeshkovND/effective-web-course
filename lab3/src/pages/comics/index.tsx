@@ -47,6 +47,7 @@ export const Comics = (): ReactElement => {
           return (
             <Card
               key={elem.id}
+              id={elem.id}
               name={elem.name}
               disc={elem.disc}
               img={elem.img}

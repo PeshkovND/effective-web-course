@@ -1,0 +1,23 @@
+.mainInfoContainer{
+    display: flex;
+}
+
+.imageContainer {
+    min-width: 250px;
+    max-width: 250px;
+    border-radius: 15px;
+    height: 350px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.heading{
+    color: red;
+}
