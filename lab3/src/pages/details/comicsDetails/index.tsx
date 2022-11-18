@@ -6,14 +6,12 @@ import { NavLink, useParams } from 'react-router-dom';
 import { series } from 'pages/series';
 import styles from '../details.module.css';
 
-export const CharactersDetails = (): ReactElement => {
+export const ComicsDetails = (): ReactElement => {
   const { id } = useParams();
   const idNumber = Number(id);
-  const character: Post | undefined = characters.find(
-    (item) => item.id === idNumber
-  );
+  const comic: Post | undefined = comics.find((item) => item.id === idNumber);
 
-  if (!character) return <div>Character not found</div>;
+  if (!comic) return <div>Comics not found</div>;
 
   const checkContent = (
     content: number[] | undefined,
@@ -42,15 +40,15 @@ export const CharactersDetails = (): ReactElement => {
     <div className={styles.infoContainer}>
       <div className={styles.mainInfoContainer}>
         <div className={styles.imageContainer}>
-          <img className={styles.img} src={character.img} alt="" />
+          <img className={styles.img} src={comic.img} alt="" />
         </div>
         <div>
-          <h2 className={styles.heading}>{character.name}</h2>
-          <p>{character.disc}</p>
+          <h2 className={styles.heading}>{comic.name}</h2>
+          <p>{comic.disc}</p>
         </div>
       </div>
-      {checkContent(character.comics, comics, 'Comics', '/comics/')}
-      {checkContent(character.series, series, 'Series', '/series/')}
+      {checkContent(comic.characters, characters, 'Characters', '/')}
+      {checkContent(comic.series, series, 'Series', '/series/')}
     </div>
   );
 };
