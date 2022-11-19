@@ -17,14 +17,12 @@ export const SeriesDetails = (): ReactElement => {
   }
   return (
     <div className={styles.infoContainer}>
-      <div className={styles.mainInfoContainer}>
-        <div className={styles.imageContainer}>
-          <img className={styles.img} src={film.img} alt="" />
-        </div>
-        <div>
-          <h2 className={styles.heading}>{film.name}</h2>
-          <p>{film.disc}</p>
-        </div>
+      <div className={styles.imageContainer}>
+        <img className={styles.img} src={film.img} alt="" />
+      </div>
+      <div className={styles.discription}>
+        <h2 className={styles.heading}>{film.name}</h2>
+        <p>{film.disc}</p>
       </div>
       <Links
         content={film.characters}

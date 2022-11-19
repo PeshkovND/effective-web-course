@@ -17,14 +17,12 @@ export const ComicsDetails = (): ReactElement => {
   }
   return (
     <div className={styles.infoContainer}>
-      <div className={styles.mainInfoContainer}>
-        <div className={styles.imageContainer}>
-          <img className={styles.img} src={comic.img} alt="" />
-        </div>
-        <div>
-          <h2 className={styles.heading}>{comic.name}</h2>
-          <p>{comic.disc}</p>
-        </div>
+      <div className={styles.imageContainer}>
+        <img className={styles.img} src={comic.img} alt="" />
+      </div>
+      <div className={styles.discription}>
+        <h2 className={styles.heading}>{comic.name}</h2>
+        <p>{comic.disc}</p>
       </div>
       <Links
         content={comic.characters}
