@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-import { characters } from 'pages/characters';
-import { comics } from 'pages/comics';
+import { characters } from 'pages/Characters';
+import { comics } from 'pages/Comics';
 import { Post } from 'types/post';
 import { useParams } from 'react-router-dom';
-import { series } from 'pages/series';
+import { series } from 'pages/Series';
 import { Links } from 'components/Links';
 import styles from '../details.module.css';
 

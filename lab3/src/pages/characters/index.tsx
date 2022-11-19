@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Post } from 'types/post';
-import { Card } from '../../components/card';
-import { Searcher } from '../../components/searcher';
+import { Card } from '../../components/Card';
+import { Searcher } from '../../components/Searcher';
 import styles from '../pages.module.css';
 
 export const characters: Post[] = [

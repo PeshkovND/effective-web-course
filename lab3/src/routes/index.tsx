@@ -1,11 +1,11 @@
 import { RouteObject } from 'react-router-dom';
-import { Chartacters } from 'pages/characters';
-import { Comics } from 'pages/comics';
-import { Series } from 'pages/series';
+import { Chartacters } from 'pages/Characters';
+import { Comics } from 'pages/Comics';
+import { Series } from 'pages/Series';
 import React from 'react';
-import { CharactersDetails } from 'pages/details/charactersDetails';
-import { ComicsDetails } from 'pages/details/comicsDetails';
-import { SeriesDetails } from 'pages/details/seriesDetails';
+import { CharactersDetails } from 'pages/details/CharactersDetails';
+import { ComicsDetails } from 'pages/details/ComicsDetails';
+import { SeriesDetails } from 'pages/details/SeriesDetails';
 
 // В этом файле массив со всем путями / роутами приложения
 
