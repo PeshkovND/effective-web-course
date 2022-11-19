@@ -11,7 +11,9 @@ export const ComicsDetails = (): ReactElement => {
   const idNumber = Number(id);
   const comic: Post | undefined = comics.find((item) => item.id === idNumber);
 
-  if (!comic) return <div>Comics not found</div>;
+  if (!comic) {
+    return <div>Comics not found</div>;
+  }
 
   const checkContent = (
     content: number[] | undefined,

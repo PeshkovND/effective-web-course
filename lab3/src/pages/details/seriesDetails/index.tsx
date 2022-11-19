@@ -11,7 +11,9 @@ export const SeriesDetails = (): ReactElement => {
   const idNumber = Number(id);
   const film: Post | undefined = series.find((item) => item.id === idNumber);
 
-  if (!film) return <div>Film not found</div>;
+  if (!film) {
+    return <div>Film not found</div>;
+  }
 
   const checkContent = (
     content: number[] | undefined,

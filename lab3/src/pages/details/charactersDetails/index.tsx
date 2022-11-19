@@ -13,7 +13,9 @@ export const CharactersDetails = (): ReactElement => {
     (item) => item.id === idNumber
   );
 
-  if (!character) return <div>Character not found</div>;
+  if (!character) {
+    return <div>Character not found</div>;
+  }
 
   const checkContent = (
     content: number[] | undefined,
