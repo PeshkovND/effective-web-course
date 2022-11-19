@@ -1,0 +1,36 @@
+.heading{
+    color: red;
+}
+
+.linksContainer{
+    width: 20%;
+    margin-left: 3%;
+}
+
+.link{
+    display: block;
+    color: rgb(53, 53, 210);
+    margin-bottom: 5px;
+}
+
+.link:hover{
+    display: block;
+    color: red;
+}
+
+@media screen and (max-width: 768px) {
+    .linksContainer{
+        width: 100%;
+        margin-left: 3%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .heading{
+        text-align: center;
+    }
+
+    .linksContainer{
+        margin-left: 0%;
+    }
+}

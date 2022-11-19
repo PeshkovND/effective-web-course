@@ -12,9 +12,9 @@ interface CardProps {
 export const Card = ({ name, disc, img, id }: CardProps): ReactElement => {
   return (
     <div className={styles.cardContainer}>
-      <div className={styles.imgContainer}>
+      <NavLink to={String(id)} className={styles.imgContainer}>
         <img className={styles.img} src={img} alt="" />
-      </div>
+      </NavLink>
       <NavLink to={String(id)} className={styles.name}>
         {name}
       </NavLink>

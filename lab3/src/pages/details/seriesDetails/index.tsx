@@ -2,8 +2,9 @@ import React, { ReactElement } from 'react';
 import { characters } from 'pages/characters';
 import { comics } from 'pages/comics';
 import { Post } from 'types/post';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { series } from 'pages/series';
+import { Links } from 'components/Links';
 import styles from '../details.module.css';
 
 export const SeriesDetails = (): ReactElement => {
@@ -14,30 +15,6 @@ export const SeriesDetails = (): ReactElement => {
   if (!film) {
     return <div>Film not found</div>;
   }
-
-  const checkContent = (
-    content: number[] | undefined,
-    array: Post[],
-    title: string,
-    link: string
-  ) => {
-    if (content) {
-      return (
-        <div className={styles.linksContainer}>
-          <h2 className={styles.heading}>{title}</h2>
-          {content.map((elem) => {
-            return (
-              <NavLink to={link + elem} key={elem} className={styles.link}>
-                {array.find((item) => item.id === elem)?.name}
-              </NavLink>
-            );
-          })}
-        </div>
-      );
-    }
-    return [];
-  };
-
   return (
     <div className={styles.infoContainer}>
       <div className={styles.mainInfoContainer}>
@@ -49,8 +26,18 @@ export const SeriesDetails = (): ReactElement => {
           <p>{film.disc}</p>
         </div>
       </div>
-      {checkContent(film.characters, characters, 'Characters', '/')}
-      {checkContent(film.comics, comics, 'Comics', '/comics/')}
+      <Links
+        content={film.characters}
+        array={characters}
+        title="Characters"
+        link="/"
+      />
+      <Links
+        content={film.comics}
+        array={comics}
+        title="Comics"
+        link="/comics/"
+      />
     </div>
   );
 };

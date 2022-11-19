@@ -30,33 +30,16 @@
     color: red;
 }
 
-.linksContainer{
-    width: 20%;
-    margin-left: 3%;
-}
-
-.link{
-    display: block;
-    color: rgb(53, 53, 210);
-}
-
-
 @media screen and (max-width: 768px) {
-    .mainInfoContainer{
+    .infoContainer {
         flex-direction: column;
-        width: 100%;
     }
-
-    .linksContainer{
+    .mainInfoContainer{
         width: 100%;
-        margin-left: 3%;
     }
 }
 
 @media screen and (max-width: 470px) {
-    .infoContainer {
-        flex-direction: column;
-    }
 
     .mainInfoContainer{
         width: 100%;
@@ -66,9 +49,5 @@
 
     .heading{
         text-align: center;
-    }
-
-    .linksContainer{
-        margin-left: 0%;
     }
 }
