@@ -1,10 +1,8 @@
 import React, { ReactElement } from 'react';
-import { characters } from 'pages/Characters';
-import { comics } from 'pages/Comics';
 import { Post } from 'types/post';
 import { useParams } from 'react-router-dom';
-import { series } from 'pages/Series';
 import { Links } from 'components/Links';
+import { characters, comics, series } from 'mocks';
 import styles from '../details.module.css';
 
 export const ComicsDetails = (): ReactElement => {
