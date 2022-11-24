@@ -20,13 +20,11 @@ export const Links = ({
     return (
       <div className={styles.linksContainer}>
         <h2 className={styles.heading}>{title}</h2>
-        {content.map((elem) => {
-          return (
-            <NavLink to={link + elem} key={elem} className={styles.link}>
-              {array.find((item) => item.id === elem)?.name}
-            </NavLink>
-          );
-        })}
+        {content.map((elem) => (
+          <NavLink to={link + elem} key={elem} className={styles.link}>
+            {array.find((item) => item.id === elem)?.name}
+          </NavLink>
+        ))}
       </div>
     );
   }
