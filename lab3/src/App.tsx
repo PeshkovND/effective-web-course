@@ -1,11 +1,14 @@
 import { RouteObject, useRoutes } from 'react-router-dom';
 import './App.css';
 import React, { ReactElement, useEffect } from 'react';
+import charactersStore from 'stores/CharactersStore';
+import { observer } from 'mobx-react-lite';
+import { toJS } from 'mobx';
 import { Footer } from './components/Footer';
 import { Header } from './components/Header';
 import { routes } from './routes';
 
-function App(): ReactElement {
+const App = observer((): ReactElement => {
   const routing: RouteObject[] = routes;
 
   const element = useRoutes(routing);
@@ -23,6 +26,6 @@ function App(): ReactElement {
       <Footer />
     </div>
   );
-}
+});
 
 export default App;
