@@ -3,4 +3,7 @@ export type Post = {
   name: string;
   disc: string;
   img: string;
+  comics?: number[];
+  characters?: number[];
+  series?: number[];
 };

@@ -1,0 +1,24 @@
+.heading{
+    color: red;
+}
+
+.linksContainer{
+    width: 100%;
+}
+
+.link{
+    display: block;
+    color: rgb(53, 53, 210);
+    margin-bottom: 5px;
+}
+
+.link:hover{
+    display: block;
+    color: red;
+}
+
+@media screen and (max-width: 470px) {
+    .heading{
+        text-align: center;
+    }
+}
