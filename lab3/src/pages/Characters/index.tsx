@@ -1,27 +1,40 @@
-import { characters } from 'mocks';
-import React, { ReactElement } from 'react';
+import { toJS } from 'mobx';
+import { observer } from 'mobx-react-lite';
+import React, { ReactElement, useEffect } from 'react';
+import charactersStore from 'stores/CharactersStore';
 import { Card } from '../../components/Card';
 import { Searcher } from '../../components/Searcher';
 import styles from '../pages.module.css';
 
-export const Chartacters = (): ReactElement => {
-  return (
-    <div>
-      <h1>Characters</h1>
-      <Searcher />
+export const Chartacters = observer((): ReactElement => {
+  useEffect(() => {
+    charactersStore.getCharacters();
+  }, []);
+
+  const fetchCharacters = () => {
+    if (charactersStore.loading) return <div>Loading...</div>;
+    return (
       <div className={styles.elemsContainer}>
-        {characters.map((elem) => {
+        {charactersStore.posts?.data.results.map((elem) => {
           return (
             <Card
               key={elem.id}
               id={elem.id}
               name={elem.name}
-              disc={elem.disc}
-              img={elem.img}
+              disc={elem.description}
+              img={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
             />
           );
         })}
       </div>
+    );
+  };
+
+  return (
+    <div>
+      <h1>Characters</h1>
+      <Searcher />
+      {fetchCharacters()}
     </div>
   );
-};
+});

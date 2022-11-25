@@ -4,7 +4,7 @@ import { CharactersResponse } from 'types/charactersApiResponse';
 
 class CharactersStore {
   @observable
-  posts: CharactersResponse[] = [];
+  posts: CharactersResponse | undefined = undefined;
 
   @observable
   loading: boolean = false;

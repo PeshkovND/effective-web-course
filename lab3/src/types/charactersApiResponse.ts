@@ -55,10 +55,20 @@ export interface Result {
   urls: Url[];
 }
 
-export interface CharactersResponse {
+export interface Data {
   offset: number;
   limit: number;
   total: number;
   count: number;
   results: Result[];
+}
+
+export interface CharactersResponse {
+  code: number;
+  status: string;
+  copyright: string;
+  attributionText: string;
+  attributionHTML: string;
+  etag: string;
+  data: Data;
 }

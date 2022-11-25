@@ -4,7 +4,7 @@ import { Md5 } from 'ts-md5';
 import { CharactersResponse } from 'types/charactersApiResponse';
 
 export default {
-  async getCharacters(): Promise<CharactersResponse[]> {
+  async getCharacters(): Promise<CharactersResponse> {
     const ts = Date.now();
     const response = await axios.get('/characters', {
       params: {
