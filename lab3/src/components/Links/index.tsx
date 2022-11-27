@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Item } from 'types/charactersApiResponse';
 import styles from './links.module.css';
 
 interface LinksProps {
-  content: Item[] | undefined;
+  content:
+    | {
+        resourceURI: string;
+        name: string;
+      }[]
+    | undefined;
   title: string;
   link: string;
 }

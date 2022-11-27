@@ -1,10 +1,10 @@
 import axios from 'api/helpers/axios';
 import environments from 'config/environments';
 import { Md5 } from 'ts-md5';
-import { CharactersResponse } from 'types/charactersApiResponse';
+import { ComicsApiResponse } from 'types/comicsApiResponse';
 
 export default {
-  async getCharacters(): Promise<CharactersResponse> {
+  async getComics(): Promise<ComicsApiResponse> {
     const ts = Date.now();
     const response = await axios.get('/comics', {
       params: {
@@ -12,14 +12,25 @@ export default {
         hash: Md5.hashStr(
           ts + environments.apiKeyPrivate + environments.apiKey
         ),
-        ts
+        ts,
+        limit: 18
       }
     });
     return response.data;
   },
 
-  async getPost(postId: number): Promise<CharactersResponse> {
-    const response = await axios.post(`/posts/${postId}`);
+  async getOneComics(id: string): Promise<ComicsApiResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/comics/${id}`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(
+          ts + environments.apiKeyPrivate + environments.apiKey
+        ),
+        ts,
+        limit: 1
+      }
+    });
 
     return response.data;
   }

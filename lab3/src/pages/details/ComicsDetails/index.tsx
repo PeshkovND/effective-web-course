@@ -1,39 +1,50 @@
-import React, { ReactElement } from 'react';
-import { Post } from 'types/post';
+import React, { ReactElement, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Links } from 'components/Links';
-import { characters, comics, series } from 'mocks';
+import comicsStore from 'stores/ComicsStore';
+import { Loading } from 'components/Loading';
+import { observer } from 'mobx-react-lite';
 import styles from '../details.module.css';
 
-export const ComicsDetails = (): ReactElement => {
+export const ComicsDetails = observer((): ReactElement => {
   const { id } = useParams();
-  const idNumber = Number(id);
-  const comic: Post | undefined = comics.find((item) => item.id === idNumber);
+  useEffect(() => {
+    if (id) comicsStore.getOneComics(id);
+  }, []);
 
-  if (!comic) {
-    return <div>Comics not found</div>;
+  if (comicsStore.loading) {
+    return <Loading />;
   }
+
+  if (!comicsStore.comicsDetails) {
+    return <div>Comics with id: {id} not found</div>;
+  }
+
   return (
     <div className={styles.infoContainer}>
       <div className={styles.imageContainer}>
-        <img className={styles.img} src={comic.img} alt="" />
+        <img
+          className={styles.img}
+          src={`${comicsStore.comicsDetails?.data.results[0].thumbnail.path}.${comicsStore.comicsDetails?.data.results[0].thumbnail.extension}`}
+          alt=""
+        />
       </div>
       <div className={styles.discription}>
-        <h2 className={styles.heading}>{comic.name}</h2>
-        <p>{comic.disc}</p>
+        <h2 className={styles.heading}>
+          {comicsStore.comicsDetails?.data.results[0].title}
+        </h2>
+        <p>{comicsStore.comicsDetails?.data.results[0].description}</p>
       </div>
       <Links
-        content={comic.characters}
-        array={characters}
+        content={comicsStore.comicsDetails?.data.results[0].characters.items}
         title="Characters"
         link="/"
       />
       <Links
-        content={comic.series}
-        array={series}
+        content={[comicsStore.comicsDetails?.data.results[0].series]}
         title="Series"
         link="/series/"
       />
     </div>
   );
-};
+});
