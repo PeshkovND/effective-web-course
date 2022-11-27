@@ -1,4 +1,4 @@
-import { toJS } from 'mobx';
+import { Loading } from 'components/Loading';
 import { observer } from 'mobx-react-lite';
 import React, { ReactElement, useEffect } from 'react';
 import charactersStore from 'stores/CharactersStore';
@@ -12,10 +12,10 @@ export const Chartacters = observer((): ReactElement => {
   }, []);
 
   const fetchCharacters = () => {
-    if (charactersStore.loading) return <div>Loading...</div>;
+    if (charactersStore.loading) return <Loading />;
     return (
       <div className={styles.elemsContainer}>
-        {charactersStore.posts?.data.results.map((elem) => {
+        {charactersStore.characters?.data.results.map((elem) => {
           return (
             <Card
               key={elem.id}

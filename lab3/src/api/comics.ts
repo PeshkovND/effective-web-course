@@ -6,31 +6,20 @@ import { CharactersResponse } from 'types/charactersApiResponse';
 export default {
   async getCharacters(): Promise<CharactersResponse> {
     const ts = Date.now();
-    const response = await axios.get('/characters', {
+    const response = await axios.get('/comics', {
       params: {
         apikey: environments.apiKey,
         hash: Md5.hashStr(
           ts + environments.apiKeyPrivate + environments.apiKey
         ),
-        ts,
-        limit: 18
+        ts
       }
     });
     return response.data;
   },
 
-  async getOneCharacter(id: string): Promise<CharactersResponse> {
-    const ts = Date.now();
-    const response = await axios.get(`/characters/${id}`, {
-      params: {
-        apikey: environments.apiKey,
-        hash: Md5.hashStr(
-          ts + environments.apiKeyPrivate + environments.apiKey
-        ),
-        ts,
-        limit: 1
-      }
-    });
+  async getPost(postId: number): Promise<CharactersResponse> {
+    const response = await axios.post(`/posts/${postId}`);
 
     return response.data;
   }

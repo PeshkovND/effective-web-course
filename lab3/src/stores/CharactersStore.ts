@@ -4,10 +4,13 @@ import { CharactersResponse } from 'types/charactersApiResponse';
 
 class CharactersStore {
   @observable
-  posts: CharactersResponse | undefined = undefined;
+  characters: CharactersResponse | undefined = undefined;
 
   @observable
   loading: boolean = false;
+
+  @observable
+  charactersDetails: CharactersResponse | undefined = undefined;
 
   constructor() {
     makeObservable(this);
@@ -18,10 +21,29 @@ class CharactersStore {
     try {
       this.loading = true;
 
-      const posts = await api.getCharacters();
+      const characters = await api.getCharacters();
 
       runInAction(() => {
-        this.posts = posts;
+        this.characters = characters;
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  };
+
+  @action
+  getOneCharacter = async (id: string): Promise<void> => {
+    try {
+      this.loading = true;
+
+      const charactersDetails = await api.getOneCharacter(id);
+
+      runInAction(() => {
+        this.charactersDetails = charactersDetails;
       });
     } catch (error) {
       console.error(error);

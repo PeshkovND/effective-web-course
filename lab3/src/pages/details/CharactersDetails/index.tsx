@@ -1,41 +1,49 @@
-import React, { ReactElement } from 'react';
-import { Post } from 'types/post';
+import React, { ReactElement, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Links } from 'components/Links';
-import { characters, comics, series } from 'mocks';
+import charactersStore from 'stores/CharactersStore';
+import { observer } from 'mobx-react-lite';
+import { Loading } from 'components/Loading';
 import styles from '../details.module.css';
 
-export const CharactersDetails = (): ReactElement => {
+export const CharactersDetails = observer((): ReactElement => {
   const { id } = useParams();
-  const idNumber = Number(id);
-  const character: Post | undefined = characters.find(
-    (item) => item.id === idNumber
-  );
+  useEffect(() => {
+    if (id) charactersStore.getOneCharacter(id);
+  }, []);
 
-  if (!character) {
-    return <div>Character not found</div>;
+  if (charactersStore.loading) {
+    return <Loading />;
   }
   return (
     <div className={styles.infoContainer}>
       <div className={styles.imageContainer}>
-        <img className={styles.img} src={character.img} alt="" />
+        <img
+          className={styles.img}
+          src={`${charactersStore.charactersDetails?.data.results[0].thumbnail.path}.${charactersStore.charactersDetails?.data.results[0].thumbnail.extension}`}
+          alt=""
+        />
       </div>
       <div className={styles.discription}>
-        <h2 className={styles.heading}>{character.name}</h2>
-        <p>{character.disc}</p>
+        <h2 className={styles.heading}>
+          {charactersStore.charactersDetails?.data.results[0].name}
+        </h2>
+        <p>{charactersStore.charactersDetails?.data.results[0].description}</p>
       </div>
       <Links
-        content={character.comics}
-        array={comics}
+        content={
+          charactersStore.charactersDetails?.data.results[0].comics.items
+        }
         title="Comics"
         link="/comics/"
       />
       <Links
-        content={character.series}
-        array={series}
+        content={
+          charactersStore.charactersDetails?.data.results[0].series.items
+        }
         title="Series"
         link="/series/"
       />
     </div>
   );
-};
+});
