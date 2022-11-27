@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Item } from 'types/charactersApiResponse';
-import { Post } from 'types/post';
 import styles from './links.module.css';
 
 interface LinksProps {

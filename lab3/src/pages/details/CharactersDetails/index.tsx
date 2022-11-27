@@ -15,6 +15,11 @@ export const CharactersDetails = observer((): ReactElement => {
   if (charactersStore.loading) {
     return <Loading />;
   }
+
+  if (!charactersStore.charactersDetails) {
+    return <div>Character with id: {id} not found</div>;
+  }
+
   return (
     <div className={styles.infoContainer}>
       <div className={styles.imageContainer}>
