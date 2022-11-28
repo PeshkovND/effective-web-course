@@ -2,7 +2,7 @@ import { observable, action, makeObservable, runInAction } from 'mobx';
 import api from 'api/characters';
 import { CharactersResponse } from 'types/charactersApiResponse';
 
-class CharactersStore {
+export class CharactersStore {
   @observable
   characters: CharactersResponse | undefined = undefined;
 
@@ -48,6 +48,26 @@ class CharactersStore {
 
       runInAction(() => {
         this.charactersDetails = charactersDetails;
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  };
+
+  @action
+  getByName = async (name: string, page: number): Promise<void> => {
+    try {
+      this.loading = true;
+
+      const characters = await api.getCharactersByName(name, page);
+
+      runInAction(() => {
+        this.characters = characters;
+        this.pageLimit = Math.ceil(characters.data.total / 18);
       });
     } catch (error) {
       console.error(error);

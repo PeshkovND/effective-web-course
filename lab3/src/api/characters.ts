@@ -32,7 +32,26 @@ export default {
         limit: 1
       }
     });
+    return response.data;
+  },
 
+  async getCharactersByName(
+    name: string,
+    page: number
+  ): Promise<CharactersResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/characters`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(
+          ts + environments.apiKeyPrivate + environments.apiKey
+        ),
+        ts,
+        limit: 18,
+        offset: page,
+        nameStartsWith: name
+      }
+    });
     return response.data;
   }
 };

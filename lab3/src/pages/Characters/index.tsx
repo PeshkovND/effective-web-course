@@ -40,7 +40,7 @@ export const Chartacters = observer((): ReactElement => {
   return (
     <div>
       <h1>Characters</h1>
-      <Searcher />
+      <Searcher store={charactersStore} />
       {fetchCharacters()}
     </div>
   );

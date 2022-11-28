@@ -40,7 +40,7 @@ export const Comics = observer((): ReactElement => {
   return (
     <div>
       <h1>Comics</h1>
-      <Searcher />
+      <Searcher store={comicsStore} />
       {fetchComics()}
     </div>
   );

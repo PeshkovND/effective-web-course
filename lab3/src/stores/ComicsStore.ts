@@ -2,7 +2,7 @@ import { observable, action, makeObservable, runInAction } from 'mobx';
 import api from 'api/comics';
 import { ComicsApiResponse } from 'types/comicsApiResponse';
 
-class ComicsStore {
+export class ComicsStore {
   @observable
   comics: ComicsApiResponse | undefined = undefined;
 
@@ -48,6 +48,26 @@ class ComicsStore {
 
       runInAction(() => {
         this.comicsDetails = comicsDetails;
+      });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      runInAction(() => {
+        this.loading = false;
+      });
+    }
+  };
+
+  @action
+  getByName = async (name: string, page: number): Promise<void> => {
+    try {
+      this.loading = true;
+
+      const characters = await api.getComicsByName(name, page);
+
+      runInAction(() => {
+        this.comics = characters;
+        this.pageLimit = Math.ceil(characters.data.total / 18);
       });
     } catch (error) {
       console.error(error);

@@ -11,7 +11,14 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
   const active = Number(page);
   const pagesToShow = 7;
 
+  if (maxPages === 1) {
+    return <div />;
+  }
+
   const arrayMaker = () => {
+    if (maxPages <= pagesToShow) {
+      return [...Array(maxPages).keys()].map((e) => e + 1);
+    }
     if (active <= (pagesToShow - (pagesToShow % 2)) / 2) {
       return [...Array(pagesToShow).keys()].map((e) => e + 1);
     }

@@ -34,5 +34,25 @@ export default {
     });
 
     return response.data;
+  },
+
+  async getSeriesByName(
+    name: string,
+    page: number
+  ): Promise<SeriesApiResponse> {
+    const ts = Date.now();
+    const response = await axios.get(`/series`, {
+      params: {
+        apikey: environments.apiKey,
+        hash: Md5.hashStr(
+          ts + environments.apiKeyPrivate + environments.apiKey
+        ),
+        ts,
+        limit: 18,
+        offset: page,
+        titleStartsWith: name
+      }
+    });
+    return response.data;
   }
 };
