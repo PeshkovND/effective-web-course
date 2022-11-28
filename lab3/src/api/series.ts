@@ -4,7 +4,7 @@ import { Md5 } from 'ts-md5';
 import { SeriesApiResponse } from 'types/seriesApiResponse';
 
 export default {
-  async getSeries(): Promise<SeriesApiResponse> {
+  async getSeries(page: number): Promise<SeriesApiResponse> {
     const ts = Date.now();
     const response = await axios.get('/series', {
       params: {
@@ -13,7 +13,8 @@ export default {
           ts + environments.apiKeyPrivate + environments.apiKey
         ),
         ts,
-        limit: 18
+        limit: 18,
+        offset: page
       }
     });
     return response.data;

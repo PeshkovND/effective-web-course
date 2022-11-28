@@ -9,13 +9,13 @@ export const Header = (): ReactElement => {
         <img src="/marvel_logo.svg" className={styles.logo} alt="Marvel" />
       </div>
       <nav className={styles.nav}>
-        <NavLink className={styles.navItem} to="/">
+        <NavLink className={styles.navItem} to="/page/1">
           Chartacters
         </NavLink>
-        <NavLink className={styles.navItem} to="/comics">
+        <NavLink className={styles.navItem} to="/comics/page/1">
           Comics
         </NavLink>
-        <NavLink className={styles.navItem} to="/series">
+        <NavLink className={styles.navItem} to="/series/page/1">
           Series
         </NavLink>
       </nav>

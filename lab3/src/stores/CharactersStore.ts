@@ -12,19 +12,23 @@ class CharactersStore {
   @observable
   charactersDetails: CharactersResponse | undefined = undefined;
 
+  @observable
+  pageLimit: number = 1;
+
   constructor() {
     makeObservable(this);
   }
 
   @action
-  getCharacters = async (): Promise<void> => {
+  getCharacters = async (page: number): Promise<void> => {
     try {
       this.loading = true;
 
-      const characters = await api.getCharacters();
+      const characters = await api.getCharacters(page);
 
       runInAction(() => {
         this.characters = characters;
+        this.pageLimit = Math.ceil(characters.data.total / 18);
       });
     } catch (error) {
       console.error(error);

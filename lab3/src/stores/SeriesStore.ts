@@ -12,19 +12,23 @@ class SeriesStore {
   @observable
   seriesDetails: SeriesApiResponse | undefined = undefined;
 
+  @observable
+  pageLimit: number = 1;
+
   constructor() {
     makeObservable(this);
   }
 
   @action
-  getSeries = async (): Promise<void> => {
+  getSeries = async (page: number): Promise<void> => {
     try {
       this.loading = true;
 
-      const series = await api.getSeries();
+      const series = await api.getSeries(page);
 
       runInAction(() => {
         this.series = series;
+        this.pageLimit = Math.ceil(series.data.total / 18);
       });
     } catch (error) {
       console.error(error);

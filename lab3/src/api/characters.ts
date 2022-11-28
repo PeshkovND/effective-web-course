@@ -4,7 +4,7 @@ import { Md5 } from 'ts-md5';
 import { CharactersResponse } from 'types/charactersApiResponse';
 
 export default {
-  async getCharacters(): Promise<CharactersResponse> {
+  async getCharacters(page: number): Promise<CharactersResponse> {
     const ts = Date.now();
     const response = await axios.get('/characters', {
       params: {
@@ -13,7 +13,8 @@ export default {
           ts + environments.apiKeyPrivate + environments.apiKey
         ),
         ts,
-        limit: 18
+        limit: 18,
+        offset: page
       }
     });
     return response.data;

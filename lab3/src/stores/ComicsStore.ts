@@ -12,19 +12,23 @@ class ComicsStore {
   @observable
   comicsDetails: ComicsApiResponse | undefined = undefined;
 
+  @observable
+  pageLimit: number = 1;
+
   constructor() {
     makeObservable(this);
   }
 
   @action
-  getComics = async (): Promise<void> => {
+  getComics = async (page: number): Promise<void> => {
     try {
       this.loading = true;
 
-      const comics = await api.getComics();
+      const comics = await api.getComics(page);
 
       runInAction(() => {
         this.comics = comics;
+        this.pageLimit = Math.ceil(comics.data.total / 18);
       });
     } catch (error) {
       console.error(error);

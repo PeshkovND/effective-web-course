@@ -1,0 +1,53 @@
+.pag{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pagContainer{
+    display: flex;
+}
+
+.pagElem {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 3px;
+    border: 2px solid black;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37px;
+    height: 37px;
+    list-style-type: none;
+    transition: background-color 0.2s;
+}
+
+.pagElem:hover {
+    background-color: rgb(221, 221, 221);
+    transition: background-color 0.2s;
+}
+
+.active {
+  background-color: rgb(255, 204, 0);
+}
+
+.lastArrow {
+    rotate: 180deg;
+}
+
+.active:hover {
+    background-color: rgb(220, 176, 0);
+}
+
+@media screen and (max-width: 450px) {
+    .pagElem {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        margin: 1px;
+    }
+}

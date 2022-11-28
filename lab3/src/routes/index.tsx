@@ -17,7 +17,7 @@ export const routes: RouteObject[] = [
   {
     path: '/',
     children: [
-      { index: true, element: <Chartacters /> },
+      { path: '/page/:page', element: <Chartacters /> },
       {
         path: '/:id',
         element: <CharactersDetails />
@@ -27,7 +27,7 @@ export const routes: RouteObject[] = [
   {
     path: '/comics',
     children: [
-      { index: true, element: <Comics /> },
+      { path: '/comics/page/:page', element: <Comics /> },
       {
         path: '/comics/:id',
         element: <ComicsDetails />
@@ -37,7 +37,7 @@ export const routes: RouteObject[] = [
   {
     path: '/series',
     children: [
-      { index: true, element: <Series /> },
+      { path: '/series/page/:page', element: <Series /> },
       {
         path: '/series/:id',
         element: <SeriesDetails />

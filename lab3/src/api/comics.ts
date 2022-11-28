@@ -4,7 +4,7 @@ import { Md5 } from 'ts-md5';
 import { ComicsApiResponse } from 'types/comicsApiResponse';
 
 export default {
-  async getComics(): Promise<ComicsApiResponse> {
+  async getComics(page: number): Promise<ComicsApiResponse> {
     const ts = Date.now();
     const response = await axios.get('/comics', {
       params: {
@@ -13,7 +13,8 @@ export default {
           ts + environments.apiKeyPrivate + environments.apiKey
         ),
         ts,
-        limit: 18
+        limit: 18,
+        offset: page
       }
     });
     return response.data;

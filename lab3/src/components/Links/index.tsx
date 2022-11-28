@@ -18,7 +18,7 @@ export const Links = ({
   title,
   link
 }: LinksProps): ReactElement | null => {
-  if (content) {
+  if (content && content?.length !== 0) {
     return (
       <div className={styles.linksContainer}>
         <h2 className={styles.heading}>{title}</h2>
