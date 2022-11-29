@@ -1,33 +1,35 @@
 import { observer } from 'mobx-react-lite';
 import React, { ReactElement, useState } from 'react';
-import { CharactersStore } from 'stores/CharactersStore';
-import { ComicsStore } from 'stores/ComicsStore';
-import { SeriesStore } from 'stores/SeriesStore';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import styles from './searcher.module.css';
 
-interface SearcherProps {
-  store: CharactersStore | ComicsStore | SeriesStore;
-}
-
-export const Searcher = observer(({ store }: SearcherProps): ReactElement => {
+export const Searcher = observer((): ReactElement => {
   const [value, setValue] = useState('');
+  const navigation = useNavigate();
 
   return (
-    <form className={styles.inputContainer}>
+    <form
+      className={styles.inputContainer}
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (value)
+          navigation({
+            pathname: '../page/1',
+            search: `?${createSearchParams({ value })}`
+          });
+        else
+          navigation({
+            pathname: '../page/1'
+          });
+      }}
+    >
       <input
         type="search"
         className={styles.input}
         onChange={(e) => setValue(e.target.value)}
         value={value}
       />
-      <button
-        type="submit"
-        className={styles.button}
-        onClick={(e) => {
-          e.preventDefault();
-          store.getByName(value, 0);
-        }}
-      >
+      <button type="submit" className={styles.button}>
         Search
       </button>
     </form>

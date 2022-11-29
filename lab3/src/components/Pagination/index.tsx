@@ -1,5 +1,10 @@
 import React, { ReactElement } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {
+  createSearchParams,
+  useNavigate,
+  useParams,
+  useSearchParams
+} from 'react-router-dom';
 import styles from './pagination.module.css';
 
 interface PaginationProps {
@@ -10,10 +15,25 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
   const { page } = useParams();
   const active = Number(page);
   const pagesToShow = 7;
+  const [searchValue] = useSearchParams();
+  const value = searchValue.get('value');
+  const navigation = useNavigate();
 
-  if (maxPages === 1) {
+  if (maxPages === 1 || maxPages === 0) {
     return <div />;
   }
+
+  const paginationNavigate = (num: number) => {
+    if (value)
+      navigation({
+        pathname: `../page/${num}`,
+        search: `?${createSearchParams({ value })}`
+      });
+    else
+      navigation({
+        pathname: `../page/${num}`
+      });
+  };
 
   const arrayMaker = () => {
     if (maxPages <= pagesToShow) {
@@ -33,39 +53,41 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
   };
 
   const pages = arrayMaker();
-
   return (
     <nav className={styles.pag}>
       <ul className={styles.pagContainer}>
         {active !== 1 ? (
           <li>
-            <Link to={`../page/${1}`} className={styles.pagElem}>
+            <div
+              className={styles.pagElem}
+              onClick={() => paginationNavigate(1)}
+            >
               <img src="/arrow.svg" alt="Begin" />
-            </Link>
+            </div>
           </li>
         ) : null}
         {pages.map((elem) => (
           <li key={elem}>
-            <Link
-              to={`../page/${elem}`}
+            <div
               className={
                 elem === active
                   ? `${styles.pagElem} ${styles.active}`
                   : styles.pagElem
               }
+              onClick={() => paginationNavigate(elem)}
             >
               {elem}
-            </Link>
+            </div>
           </li>
         ))}
         {active !== maxPages ? (
           <li>
-            <Link
-              to={`../page/${maxPages}`}
+            <div
               className={`${styles.pagElem} ${styles.lastArrow}`}
+              onClick={() => paginationNavigate(maxPages)}
             >
               <img src="/arrow.svg" alt="Begin" />
-            </Link>
+            </div>
           </li>
         ) : null}
       </ul>

@@ -62,7 +62,6 @@ export class CharactersStore {
   getByName = async (name: string, page: number): Promise<void> => {
     try {
       this.loading = true;
-
       const characters = await api.getCharactersByName(name, page);
 
       runInAction(() => {
