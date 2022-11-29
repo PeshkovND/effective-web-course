@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+.dark {
+    background-color: black;
+}
+
+
 .logoContainer {
     width: 100px;
 }

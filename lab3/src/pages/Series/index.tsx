@@ -47,7 +47,7 @@ export const Series = observer((): ReactElement => {
 
   return (
     <div>
-      <h1>Comics</h1>
+      <h1>Series</h1>
       <Searcher />
       {fetchSeries()}
     </div>

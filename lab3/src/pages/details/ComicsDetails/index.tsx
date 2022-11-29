@@ -4,9 +4,11 @@ import { Links } from 'components/Links';
 import comicsStore from 'stores/ComicsStore';
 import { Loading } from 'components/Loading';
 import { observer } from 'mobx-react-lite';
+import themeStore from 'stores/ThemeStore';
 import styles from '../details.module.css';
 
 export const ComicsDetails = observer((): ReactElement => {
+  const theme = themeStore.darkTheme;
   const { id } = useParams();
   useEffect(() => {
     if (id) comicsStore.getOneComics(id);
@@ -29,8 +31,16 @@ export const ComicsDetails = observer((): ReactElement => {
           alt=""
         />
       </div>
-      <div className={styles.discription}>
-        <h2 className={styles.heading}>
+      <div
+        className={
+          theme ? `${styles.discription} ${styles.dark}` : styles.discription
+        }
+      >
+        <h2
+          className={
+            theme ? `${styles.heading} ${styles.dark}` : styles.heading
+          }
+        >
           {comicsStore.comicsDetails?.data.results[0].title}
         </h2>
         <p>{comicsStore.comicsDetails?.data.results[0].description}</p>

@@ -4,9 +4,11 @@ import { Links } from 'components/Links';
 import charactersStore from 'stores/CharactersStore';
 import { observer } from 'mobx-react-lite';
 import { Loading } from 'components/Loading';
+import themeStore from 'stores/ThemeStore';
 import styles from '../details.module.css';
 
 export const CharactersDetails = observer((): ReactElement => {
+  const theme = themeStore.darkTheme;
   const { id } = useParams();
   useEffect(() => {
     if (id) charactersStore.getOneCharacter(id);
@@ -29,8 +31,16 @@ export const CharactersDetails = observer((): ReactElement => {
           alt=""
         />
       </div>
-      <div className={styles.discription}>
-        <h2 className={styles.heading}>
+      <div
+        className={
+          theme ? `${styles.discription} ${styles.dark}` : styles.discription
+        }
+      >
+        <h2
+          className={
+            theme ? `${styles.heading} ${styles.dark}` : styles.heading
+          }
+        >
           {charactersStore.charactersDetails?.data.results[0].name}
         </h2>
         <p>{charactersStore.charactersDetails?.data.results[0].description}</p>

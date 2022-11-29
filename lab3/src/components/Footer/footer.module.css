@@ -4,6 +4,11 @@
     font-size: 20px;
 }
 
+.footerContainer.dark {
+    background-color: black;
+    color: white;
+}
+
 .logoContainer {
     width: 100px;
     margin-bottom: 10px;
@@ -19,4 +24,8 @@
 
 .link:visited {
     color: black
+}
+
+.link.dark{
+    color: white;
 }
