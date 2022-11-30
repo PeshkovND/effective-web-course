@@ -25,6 +25,7 @@ export const Chartacters = observer((): ReactElement => {
 
   const fetchCharacters = () => {
     if (charactersStore.loading) return <Loading />;
+    if (charactersStore.error) return <div>{charactersStore.error}</div>;
     return (
       <div>
         <div className={styles.elemsContainer}>

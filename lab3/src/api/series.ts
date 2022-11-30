@@ -6,7 +6,7 @@ import { SeriesApiResponse } from 'types/seriesApiResponse';
 export default {
   async getSeries(page: number): Promise<SeriesApiResponse> {
     const ts = Date.now();
-    const response = await axios.get('/series', {
+    const response = axios.get('/series', {
       params: {
         apikey: environments.apiKey,
         hash: Md5.hashStr(
@@ -14,15 +14,27 @@ export default {
         ),
         ts,
         limit: 18,
-        offset: page
+        offset: page,
+        orderBy: 'title'
       }
     });
-    return response.data;
+    return response
+      .then((e) => {
+        if (e.data.data.count !== 0) return e.data;
+        throw new Error('Large page number');
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.data === '') throw e.response.statusText;
+          else if (e.response.data.status) throw e.response.data.status;
+          else throw e.response.data.message;
+        } else throw e.message;
+      });
   },
 
   async getOneSeries(id: string): Promise<SeriesApiResponse> {
     const ts = Date.now();
-    const response = await axios.get(`/series/${id}`, {
+    const response = axios.get(`/series/${id}`, {
       params: {
         apikey: environments.apiKey,
         hash: Md5.hashStr(
@@ -33,7 +45,17 @@ export default {
       }
     });
 
-    return response.data;
+    return response
+      .then((e) => {
+        return e.data;
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.data === '') throw e.response.statusText;
+          else if (e.response.data.status) throw e.response.data.status;
+          else throw e.response.data.message;
+        } else throw e.message;
+      });
   },
 
   async getSeriesByName(
@@ -41,7 +63,7 @@ export default {
     page: number
   ): Promise<SeriesApiResponse> {
     const ts = Date.now();
-    const response = await axios.get(`/series`, {
+    const response = axios.get(`/series`, {
       params: {
         apikey: environments.apiKey,
         hash: Md5.hashStr(
@@ -50,9 +72,22 @@ export default {
         ts,
         limit: 18,
         offset: page,
-        titleStartsWith: name
+        titleStartsWith: name,
+        orderBy: 'title'
       }
     });
-    return response.data;
+    return response
+      .then((e) => {
+        if (e.data.data.total === 0) throw new Error('Comics not found');
+        if (e.data.data.count === 0) throw new Error('Large page number');
+        return e.data;
+      })
+      .catch((e) => {
+        if (e.response) {
+          if (e.response.data === '') throw e.response.statusText;
+          else if (e.response.data.status) throw e.response.data.status;
+          else throw e.response.data.message;
+        } else throw e.message;
+      });
   }
 };

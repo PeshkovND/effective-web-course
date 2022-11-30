@@ -25,6 +25,7 @@ export const Series = observer((): ReactElement => {
 
   const fetchSeries = () => {
     if (seriesStore.loading) return <Loading />;
+    if (seriesStore.error) return <div>{seriesStore.error}</div>;
     return (
       <div>
         <div className={styles.elemsContainer}>

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Links } from 'components/Links';
 import charactersStore from 'stores/CharactersStore';
@@ -7,7 +7,7 @@ import { Loading } from 'components/Loading';
 import themeStore from 'stores/ThemeStore';
 import styles from '../details.module.css';
 
-export const CharactersDetails = observer((): ReactElement => {
+export const CharactersDetails: React.FC = observer(() => {
   const theme = themeStore.darkTheme;
   const { id } = useParams();
   useEffect(() => {
@@ -18,47 +18,49 @@ export const CharactersDetails = observer((): ReactElement => {
     return <Loading />;
   }
 
-  if (!charactersStore.charactersDetails) {
-    return <div>Character with id: {id} not found</div>;
-  }
-
-  return (
-    <div className={styles.infoContainer}>
-      <div className={styles.imageContainer}>
-        <img
-          className={styles.img}
-          src={`${charactersStore.charactersDetails?.data.results[0].thumbnail.path}.${charactersStore.charactersDetails?.data.results[0].thumbnail.extension}`}
-          alt=""
-        />
-      </div>
-      <div
-        className={
-          theme ? `${styles.discription} ${styles.dark}` : styles.discription
-        }
-      >
-        <h2
+  if (charactersStore.error) return <div>{charactersStore.error}</div>;
+  if (charactersStore.charactersDetails) {
+    return (
+      <div className={styles.infoContainer}>
+        <div className={styles.imageContainer}>
+          <img
+            className={styles.img}
+            src={`${charactersStore.charactersDetails?.data.results[0].thumbnail.path}.${charactersStore.charactersDetails?.data.results[0].thumbnail.extension}`}
+            alt=""
+          />
+        </div>
+        <div
           className={
-            theme ? `${styles.heading} ${styles.dark}` : styles.heading
+            theme ? `${styles.discription} ${styles.dark}` : styles.discription
           }
         >
-          {charactersStore.charactersDetails?.data.results[0].name}
-        </h2>
-        <p>{charactersStore.charactersDetails?.data.results[0].description}</p>
+          <h2
+            className={
+              theme ? `${styles.heading} ${styles.dark}` : styles.heading
+            }
+          >
+            {charactersStore.charactersDetails?.data.results[0].name}
+          </h2>
+          <p>
+            {charactersStore.charactersDetails?.data.results[0].description}
+          </p>
+        </div>
+        <Links
+          content={
+            charactersStore.charactersDetails?.data.results[0].comics.items
+          }
+          title="Comics"
+          link="/comics/"
+        />
+        <Links
+          content={
+            charactersStore.charactersDetails?.data.results[0].series.items
+          }
+          title="Series"
+          link="/series/"
+        />
       </div>
-      <Links
-        content={
-          charactersStore.charactersDetails?.data.results[0].comics.items
-        }
-        title="Comics"
-        link="/comics/"
-      />
-      <Links
-        content={
-          charactersStore.charactersDetails?.data.results[0].series.items
-        }
-        title="Series"
-        link="/series/"
-      />
-    </div>
-  );
+    );
+  }
+  return null;
 });

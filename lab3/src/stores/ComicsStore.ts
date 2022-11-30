@@ -15,6 +15,9 @@ export class ComicsStore {
   @observable
   pageLimit: number = 1;
 
+  @observable
+  error: string | undefined = undefined;
+
   constructor() {
     makeObservable(this);
   }
@@ -23,6 +26,7 @@ export class ComicsStore {
   getComics = async (page: number): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const comics = await api.getComics(page);
 
@@ -31,7 +35,9 @@ export class ComicsStore {
         this.pageLimit = Math.ceil(comics.data.total / 18);
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -43,6 +49,7 @@ export class ComicsStore {
   getOneComics = async (id: string): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const comicsDetails = await api.getOneComics(id);
 
@@ -50,7 +57,9 @@ export class ComicsStore {
         this.comicsDetails = comicsDetails;
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -62,6 +71,7 @@ export class ComicsStore {
   getByName = async (name: string, page: number): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const characters = await api.getComicsByName(name, page);
 
@@ -70,7 +80,9 @@ export class ComicsStore {
         this.pageLimit = Math.ceil(characters.data.total / 18);
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;

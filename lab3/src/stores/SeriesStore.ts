@@ -15,6 +15,9 @@ export class SeriesStore {
   @observable
   pageLimit: number = 1;
 
+  @observable
+  error: string | undefined = undefined;
+
   constructor() {
     makeObservable(this);
   }
@@ -23,6 +26,7 @@ export class SeriesStore {
   getSeries = async (page: number): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const series = await api.getSeries(page);
 
@@ -31,7 +35,9 @@ export class SeriesStore {
         this.pageLimit = Math.ceil(series.data.total / 18);
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -43,6 +49,7 @@ export class SeriesStore {
   getOneSeries = async (id: string): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const seriesDetails = await api.getOneSeries(id);
 
@@ -50,7 +57,9 @@ export class SeriesStore {
         this.seriesDetails = seriesDetails;
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;
@@ -62,6 +71,7 @@ export class SeriesStore {
   getByName = async (name: string, page: number): Promise<void> => {
     try {
       this.loading = true;
+      this.error = undefined;
 
       const characters = await api.getSeriesByName(name, page);
 
@@ -70,7 +80,9 @@ export class SeriesStore {
         this.pageLimit = Math.ceil(characters.data.total / 18);
       });
     } catch (error) {
-      console.error(error);
+      runInAction(() => {
+        if (typeof error === 'string') this.error = error;
+      });
     } finally {
       runInAction(() => {
         this.loading = false;

@@ -25,6 +25,7 @@ export const Comics = observer((): ReactElement => {
 
   const fetchComics = () => {
     if (comicsStore.loading) return <Loading />;
+    if (comicsStore.error) return <div>{comicsStore.error}</div>;
     return (
       <div>
         <div className={styles.elemsContainer}>
