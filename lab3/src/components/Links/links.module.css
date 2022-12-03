@@ -2,6 +2,10 @@
     color: red;
 }
 
+.heading.dark{
+    color: rgb(255, 204, 0);
+}
+
 .linksContainer{
     width: 100%;
 }
@@ -10,6 +14,10 @@
     display: block;
     color: rgb(53, 53, 210);
     margin-bottom: 5px;
+}
+
+.link.dark{
+    color: rgb(210, 147, 53);
 }
 
 .link:hover{

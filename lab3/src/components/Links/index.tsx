@@ -1,30 +1,47 @@
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Post } from 'types/post';
+import themeStore from 'stores/ThemeStore';
 import styles from './links.module.css';
 
 interface LinksProps {
-  content: number[] | undefined;
-  array: Post[];
+  content:
+    | {
+        resourceURI: string;
+        name: string;
+      }[]
+    | undefined;
   title: string;
   link: string;
 }
 
 export const Links = ({
   content,
-  array,
   title,
   link
 }: LinksProps): ReactElement | null => {
-  if (content) {
+  const theme = themeStore.darkTheme;
+  if (content && content?.length !== 0) {
     return (
       <div className={styles.linksContainer}>
-        <h2 className={styles.heading}>{title}</h2>
-        {content.map((elem) => (
-          <NavLink to={link + elem} key={elem} className={styles.link}>
-            {array.find((item) => item.id === elem)?.name}
-          </NavLink>
-        ))}
+        <h2
+          className={
+            theme ? `${styles.heading} ${styles.dark}` : styles.heading
+          }
+        >
+          {title}
+        </h2>
+        {content.map((elem) => {
+          const id: string = elem.resourceURI.replace(RegExp('.+/'), '');
+          return (
+            <NavLink
+              to={link + id}
+              key={id}
+              className={theme ? `${styles.link} ${styles.dark}` : styles.link}
+            >
+              {elem.name}
+            </NavLink>
+          );
+        })}
       </div>
     );
   }

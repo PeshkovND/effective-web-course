@@ -4,6 +4,11 @@
     padding: 10px;
 }
 
+.cardContainer.dark {
+    border: 2px solid rgb(114, 114, 114);
+    background-color: rgb(54, 54, 54);
+}
+
 .imgContainer {
     display: block;
     cursor: pointer;
@@ -28,6 +33,10 @@
     text-transform: uppercase;
 }
 
+.name.dark {
+    color: rgb(255, 204, 0);
+}
+
 .name:hover {
     text-decoration: underline;
 }
@@ -40,4 +49,9 @@
     font-size: 15px;
     width: 100%;
     -webkit-line-clamp: 3;
+    height: 67.5px;
+}
+
+.disc.dark {
+    color: rgb(130, 141, 204);
 }

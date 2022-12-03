@@ -1,39 +1,59 @@
-import React, { ReactElement } from 'react';
-import { Post } from 'types/post';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Links } from 'components/Links';
-import { characters, comics, series } from 'mocks';
+import seriesStore from 'stores/SeriesStore';
+import { Loading } from 'components/Loading';
+import { observer } from 'mobx-react-lite';
+import themeStore from 'stores/ThemeStore';
 import styles from '../details.module.css';
 
-export const SeriesDetails = (): ReactElement => {
+export const SeriesDetails: React.FC = observer(() => {
+  const theme = themeStore.darkTheme;
   const { id } = useParams();
-  const idNumber = Number(id);
-  const film: Post | undefined = series.find((item) => item.id === idNumber);
+  useEffect(() => {
+    if (id) seriesStore.getOneSeries(id);
+  }, []);
 
-  if (!film) {
-    return <div>Film not found</div>;
+  if (seriesStore.loading) {
+    return <Loading />;
   }
-  return (
-    <div className={styles.infoContainer}>
-      <div className={styles.imageContainer}>
-        <img className={styles.img} src={film.img} alt="" />
+  if (seriesStore.error) return <div>{seriesStore.error}</div>;
+  if (seriesStore.seriesDetails) {
+    return (
+      <div className={styles.infoContainer}>
+        <div className={styles.imageContainer}>
+          <img
+            className={styles.img}
+            src={`${seriesStore.seriesDetails?.data.results[0].thumbnail.path}.${seriesStore.seriesDetails?.data.results[0].thumbnail.extension}`}
+            alt=""
+          />
+        </div>
+        <div
+          className={
+            theme ? `${styles.discription} ${styles.dark}` : styles.discription
+          }
+        >
+          <h2
+            className={
+              theme ? `${styles.heading} ${styles.dark}` : styles.heading
+            }
+          >
+            {seriesStore.seriesDetails?.data.results[0].title}
+          </h2>
+          <p>{seriesStore.seriesDetails?.data.results[0].description}</p>
+        </div>
+        <Links
+          content={seriesStore.seriesDetails?.data.results[0].characters.items}
+          title="Characters"
+          link="/"
+        />
+        <Links
+          content={seriesStore.seriesDetails?.data.results[0].comics.items}
+          title="Comics"
+          link="/comics/"
+        />
       </div>
-      <div className={styles.discription}>
-        <h2 className={styles.heading}>{film.name}</h2>
-        <p>{film.disc}</p>
-      </div>
-      <Links
-        content={film.characters}
-        array={characters}
-        title="Characters"
-        link="/"
-      />
-      <Links
-        content={film.comics}
-        array={comics}
-        title="Comics"
-        link="/comics/"
-      />
-    </div>
-  );
-};
+    );
+  }
+  return null;
+});
