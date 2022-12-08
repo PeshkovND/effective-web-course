@@ -22,7 +22,7 @@ export const Header = observer((): ReactElement => {
           onClick={() => i18n.changeLanguage('ru')}
           type="button"
         >
-          <MdOutlineLanguage /> <span>ENG</span>
+          <MdOutlineLanguage /> <span>EN</span>
         </button>
       );
     return (
@@ -31,7 +31,7 @@ export const Header = observer((): ReactElement => {
         onClick={() => i18n.changeLanguage('en')}
         type="button"
       >
-        <MdOutlineLanguage /> <span>RUS</span>
+        <MdOutlineLanguage /> <span>RU</span>
       </button>
     );
   };
@@ -60,12 +60,12 @@ export const Header = observer((): ReactElement => {
           </NavLink>
           <div className={styles.checkboxWrapper} />
         </nav>
+        {checkLanguageButton()}
         <input
           type="checkbox"
           className={styles.switch_1}
           onChange={() => themeStore.changeTheme(theme)}
         />
-        {checkLanguageButton()}
       </div>
     </header>
   );
