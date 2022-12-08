@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import themeStore from 'stores/ThemeStore';
+import { useTranslation } from 'react-i18next';
 import styles from './links.module.css';
+import 'i18n';
 
 interface LinksProps {
   content:
@@ -20,6 +22,8 @@ export const Links = ({
   link
 }: LinksProps): ReactElement | null => {
   const theme = themeStore.darkTheme;
+
+  const { t } = useTranslation();
   if (content && content?.length !== 0) {
     return (
       <div className={styles.linksContainer}>
@@ -28,7 +32,7 @@ export const Links = ({
             theme ? `${styles.heading} ${styles.dark}` : styles.heading
           }
         >
-          {title}
+          {t(title)}
         </h2>
         {content.map((elem) => {
           const id: string = elem.resourceURI.replace(RegExp('.+/'), '');

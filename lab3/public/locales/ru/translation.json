@@ -1,0 +1,20 @@
+{
+  "header": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии"
+  },
+  "pages": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии"
+  },
+  "details": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии"
+  },
+  "footer": {
+    "provided": "Данные предоставлены"
+  }
+}

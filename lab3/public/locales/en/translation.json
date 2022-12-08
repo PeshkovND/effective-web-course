@@ -1,0 +1,20 @@
+{
+  "header": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series"
+  },
+  "pages": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series"
+  },
+  "details": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series"
+  },
+  "footer": {
+    "provided": "Data provided by"
+  }
+}

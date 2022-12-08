@@ -4,14 +4,18 @@ import { observer } from 'mobx-react-lite';
 import React, { ReactElement, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import seriesStore from 'stores/SeriesStore';
+import { useTranslation } from 'react-i18next';
 import { Card } from '../../components/Card';
 import { Searcher } from '../../components/Searcher';
 import styles from '../pages.module.css';
+import 'i18n';
 
 export const Series = observer((): ReactElement => {
   const { page } = useParams();
   const [searchValue] = useSearchParams();
   const value = searchValue.get('value');
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (page) {
@@ -48,7 +52,7 @@ export const Series = observer((): ReactElement => {
 
   return (
     <div>
-      <h1>Series</h1>
+      <h1>{t('pages.series')}</h1>
       <Searcher />
       {fetchSeries()}
     </div>
