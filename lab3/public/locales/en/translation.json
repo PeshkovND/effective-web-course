@@ -2,12 +2,15 @@
   "header": {
     "characters": "Characters",
     "comics": "Comics",
-    "series": "Series"
+    "series": "Series",
+    "favourites": "Favourites"
   },
   "pages": {
     "characters": "Characters",
     "comics": "Comics",
-    "series": "Series"
+    "series": "Series",
+    "emptyFavorites": "Favourites is empty",
+    "favourites": "Favourites"
   },
   "details": {
     "characters": "Characters",

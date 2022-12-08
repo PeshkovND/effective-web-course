@@ -1,4 +1,5 @@
 .cardContainer {
+    position: relative;
     width: 100%;
     border: 2px solid rgb(42, 42, 42);
     padding: 10px;
@@ -54,4 +55,19 @@
 
 .disc.dark {
     color: rgb(130, 141, 204);
+}
+
+.favouriteButton {
+    cursor: pointer;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+.favouriteButton.favouriteUnactive{
+    color: rgb(189, 189, 189);
+}
+
+.favouriteButton.favouriteActive{
+    color: rgb(242, 48, 48);
 }

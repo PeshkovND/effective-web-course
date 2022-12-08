@@ -2,12 +2,15 @@
   "header": {
     "characters": "Персонажи",
     "comics": "Комиксы",
-    "series": "Серии"
+    "series": "Серии",
+    "favourites": "Избранное"
   },
   "pages": {
     "characters": "Персонажи",
     "comics": "Комиксы",
-    "series": "Серии"
+    "series": "Серии",
+    "emptyFavorites": "Избранное пусто",
+    "favourites": "Избранное"
   },
   "details": {
     "characters": "Персонажи",

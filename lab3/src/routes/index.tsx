@@ -6,6 +6,7 @@ import React from 'react';
 import { CharactersDetails } from 'pages/details/CharactersDetails';
 import { ComicsDetails } from 'pages/details/ComicsDetails';
 import { SeriesDetails } from 'pages/details/SeriesDetails';
+import { Favourites } from 'pages/Favourites';
 
 // В этом файле массив со всем путями / роутами приложения
 
@@ -15,11 +16,11 @@ export const routes: RouteObject[] = [
     element: <div>Not Found</div>
   },
   {
-    path: '/',
+    path: '/characters',
     children: [
-      { path: '/page/:page', element: <Chartacters /> },
+      { path: '/characters/page/:page', element: <Chartacters /> },
       {
-        path: '/:id',
+        path: '/characters/:id',
         element: <CharactersDetails />
       }
     ]
@@ -43,5 +44,9 @@ export const routes: RouteObject[] = [
         element: <SeriesDetails />
       }
     ]
+  },
+  {
+    path: '/favourites',
+    element: <Favourites />
   }
 ];

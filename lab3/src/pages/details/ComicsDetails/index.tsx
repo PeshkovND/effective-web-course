@@ -46,7 +46,7 @@ export const ComicsDetails: React.FC = observer(() => {
         <Links
           content={comicsStore.comicsDetails?.data.results[0].characters.items}
           title="details.characters"
-          link="/"
+          link="/characters/"
         />
         <Links
           content={[comicsStore.comicsDetails?.data.results[0].series]}

@@ -37,10 +37,12 @@ export const Comics = observer((): ReactElement => {
             return (
               <Card
                 key={elem.id}
-                id={elem.id}
+                id={String(elem.id)}
                 name={elem.title}
                 disc={elem.description}
                 img={`${elem.thumbnail.path}.${elem.thumbnail.extension}`}
+                store={comicsStore}
+                location="comics"
               />
             );
           })}

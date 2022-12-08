@@ -1,6 +1,7 @@
 import { observable, action, makeObservable, runInAction } from 'mobx';
 import api from 'api/characters';
 import { CharactersResponse } from 'types/charactersApiResponse';
+import { FavouriteType } from 'types/favouriteType';
 
 export class CharactersStore {
   @observable
@@ -17,6 +18,9 @@ export class CharactersStore {
 
   @observable
   error: string | undefined = undefined;
+
+  @observable
+  favourites: FavouriteType[] = [];
 
   constructor() {
     makeObservable(this);
@@ -86,6 +90,18 @@ export class CharactersStore {
         this.loading = false;
       });
     }
+  };
+
+  @action
+  addFavorites = async (elem: FavouriteType): Promise<void> => {
+    this.favourites.push(elem);
+  };
+
+  @action
+  removeFavorites = async (elem: FavouriteType): Promise<void> => {
+    this.favourites = this.favourites.filter(
+      (favElem) => favElem.id !== elem.id
+    );
   };
 }
 

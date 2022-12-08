@@ -49,7 +49,7 @@ export const Header = observer((): ReactElement => {
       </div>
       <div className={styles.flexContainer}>
         <nav className={styles.nav}>
-          <NavLink className={styles.navItem} to="/page/1">
+          <NavLink className={styles.navItem} to="/characters/page/1">
             {t('header.characters')}
           </NavLink>
           <NavLink className={styles.navItem} to="/comics/page/1">
@@ -57,6 +57,9 @@ export const Header = observer((): ReactElement => {
           </NavLink>
           <NavLink className={styles.navItem} to="/series/page/1">
             {t('header.series')}
+          </NavLink>
+          <NavLink className={styles.navItem} to="/favourites">
+            {t('header.favourites')}
           </NavLink>
           <div className={styles.checkboxWrapper} />
         </nav>
