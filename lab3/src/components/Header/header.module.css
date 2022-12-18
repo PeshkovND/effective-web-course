@@ -1,6 +1,6 @@
 .headerContainer {
     display: flex;
-    background-color: red;
+    background-color: var(--red);
     justify-content: space-between;
     padding: 15px;
     align-items: center;
@@ -12,7 +12,7 @@
 }
 
 .dark {
-    background-color: black;
+    background-color: var(--black);
 }
 
 
@@ -33,11 +33,11 @@
     cursor: pointer;
     transition: 0.2s all;
     text-decoration: none;
-    color: rgb(255, 204, 0);
+    color: var(--yellow);
 }
 
 .navItem:hover {
-    color: white;
+    color: var(--white);
     transition: 0.2s all;
 }
 
@@ -52,12 +52,12 @@
     height: 30px;
     margin-left: 10px;
     cursor: pointer;
-    color: rgb(255, 204, 0);
+    color: var(--yellow);
     transition: 0.2s all;
 }
 
 .langButton:hover {
-    color: white;
+    color: var(--white);
     transition: 0.2s all;
 }
 

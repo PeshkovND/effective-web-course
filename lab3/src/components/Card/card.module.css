@@ -1,13 +1,13 @@
 .cardContainer {
     position: relative;
     width: 100%;
-    border: 2px solid rgb(42, 42, 42);
+    border: 2px solid var(--black);
     padding: 10px;
 }
 
 .cardContainer.dark {
-    border: 2px solid rgb(114, 114, 114);
-    background-color: rgb(54, 54, 54);
+    border: 2px solid var(--borderGray);
+    background-color: var(--backgroundGray);
 }
 
 .imgContainer {
@@ -30,12 +30,12 @@
 .name {
     cursor: pointer;
     font-size: 25px;
-    color: red;
+    color: var(--red);
     text-transform: uppercase;
 }
 
 .name.dark {
-    color: rgb(255, 204, 0);
+    color: var(--yellow);
 }
 
 .name:hover {
@@ -54,7 +54,7 @@
 }
 
 .disc.dark {
-    color: rgb(130, 141, 204);
+    color: var(--blue);
 }
 
 .favouriteButton {
@@ -65,11 +65,11 @@
 }
 
 .favouriteButton.favouriteUnactive{
-    color: rgb(189, 189, 189);
+    color: var(--favGray);
     transition: 0.2s all;
 }
 
 .favouriteButton.favouriteActive{
-    color: rgb(242, 48, 48);
+    color: var(--favRed);
     transition: 0.2s all;
 }

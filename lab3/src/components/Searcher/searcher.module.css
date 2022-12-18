@@ -12,9 +12,9 @@
 .button {
     width: 150px;
     font-size: 20px;
-    background-color: rgb(255, 204, 0);
+    background-color: var(--yellow);
     border: none;
-    color: white;
+    color: var(--white);
     cursor: pointer;
     margin-left: 10px;
 }

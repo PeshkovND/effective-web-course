@@ -15,7 +15,7 @@
 }
 
 .discription.dark {
-    color: rgb(130, 141, 204);;
+    color: var(--link);
 }
 
 .img {
@@ -26,11 +26,11 @@
 }
 
 .heading{
-    color: red;
+    color: var(--red);
 }
 
 .heading.dark {
-    color: rgb(255, 204, 0);
+    color: var(--yellow);
 }
 
 @media screen and (max-width: 768px) {

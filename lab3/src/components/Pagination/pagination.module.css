@@ -10,7 +10,7 @@
 }
 
 .pagElem {
-    color: black;
+    color: var(--black);
     text-decoration: none;
     cursor: pointer;
     font-size: 20px;
@@ -27,12 +27,12 @@
 }
 
 .pagElem:hover {
-    background-color: rgb(221, 221, 221);
+    background-color: var(--pagHover);
     transition: background-color 0.2s;
 }
 
 .active {
-  background-color: rgb(255, 204, 0);
+  background-color: var(--yellow);
 }
 
 .lastArrow {
@@ -40,7 +40,7 @@
 }
 
 .active:hover {
-    background-color: rgb(220, 176, 0);
+    background-color: var(--yellow);
 }
 
 @media screen and (max-width: 450px) {
