@@ -60,14 +60,11 @@ export const Card = observer(
             : styles.cardContainer
         }
       >
-        <NavLink
-          to={`/${location}/${String(id)}`}
-          className={styles.imgContainer}
-        >
+        <NavLink to={`/${location}/${id}`} className={styles.imgContainer}>
           <img className={styles.img} src={img} alt="" />
         </NavLink>
         <NavLink
-          to={`/${location}/${String(id)}`}
+          to={`/${location}/${id}`}
           className={theme ? `${styles.name} ${styles.dark}` : styles.name}
         >
           {name}

@@ -1,9 +1,8 @@
-import { observer } from 'mobx-react-lite';
 import React, { ReactElement, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import styles from './searcher.module.css';
 
-export const Searcher = observer((): ReactElement => {
+export const Searcher = (): ReactElement => {
   const [value, setValue] = useState('');
   const navigation = useNavigate();
 
@@ -34,4 +33,4 @@ export const Searcher = observer((): ReactElement => {
       </button>
     </form>
   );
-});
+};

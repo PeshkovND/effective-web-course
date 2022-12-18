@@ -66,8 +66,10 @@
 
 .favouriteButton.favouriteUnactive{
     color: rgb(189, 189, 189);
+    transition: 0.2s all;
 }
 
 .favouriteButton.favouriteActive{
     color: rgb(242, 48, 48);
+    transition: 0.2s all;
 }

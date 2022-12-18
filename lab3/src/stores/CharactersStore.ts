@@ -20,7 +20,9 @@ export class CharactersStore {
   error: string | undefined = undefined;
 
   @observable
-  favourites: FavouriteType[] = [];
+  favourites: FavouriteType[] = JSON.parse(
+    localStorage.getItem('favouriteCharacters') || '[]'
+  );
 
   constructor() {
     makeObservable(this);
@@ -93,14 +95,22 @@ export class CharactersStore {
   };
 
   @action
-  addFavorites = async (elem: FavouriteType): Promise<void> => {
+  addFavorites = (elem: FavouriteType): void => {
     this.favourites.push(elem);
+    localStorage.setItem(
+      'favouriteCharacters',
+      JSON.stringify(this.favourites)
+    );
   };
 
   @action
-  removeFavorites = async (elem: FavouriteType): Promise<void> => {
+  removeFavorites = (elem: FavouriteType): void => {
     this.favourites = this.favourites.filter(
       (favElem) => favElem.id !== elem.id
+    );
+    localStorage.setItem(
+      'favouriteCharacters',
+      JSON.stringify(this.favourites)
     );
   };
 }

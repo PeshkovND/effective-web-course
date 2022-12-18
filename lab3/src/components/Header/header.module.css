@@ -53,6 +53,12 @@
     margin-left: 10px;
     cursor: pointer;
     color: rgb(255, 204, 0);
+    transition: 0.2s all;
+}
+
+.langButton:hover {
+    color: white;
+    transition: 0.2s all;
 }
 
 .langButton:active {
