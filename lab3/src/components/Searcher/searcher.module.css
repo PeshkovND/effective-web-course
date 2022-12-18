@@ -1,20 +1,4 @@
-.inputContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
 .input {
-    flex-grow: 1;
-}
-
-.button {
-    width: 150px;
-    font-size: 20px;
-    background-color: var(--yellow);
-    border: none;
-    color: var(--white);
-    cursor: pointer;
-    margin-left: 10px;
+    width: 100%;
+    margin-bottom: 30px;
 }

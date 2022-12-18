@@ -104,6 +104,11 @@ export class CharactersStore {
   };
 
   @action
+  setLoading = (): void => {
+    this.loading = true;
+  };
+
+  @action
   removeFavorites = (elem: FavouriteType): void => {
     this.favourites = this.favourites.filter(
       (favElem) => favElem.id !== elem.id

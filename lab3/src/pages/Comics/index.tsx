@@ -55,7 +55,7 @@ export const Comics = observer((): ReactElement => {
   return (
     <div>
       <h1>{t('pages.comics')}</h1>
-      <Searcher />
+      <Searcher store={comicsStore} />
       {fetchComics()}
     </div>
   );

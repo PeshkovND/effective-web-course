@@ -55,7 +55,7 @@ export const Series = observer((): ReactElement => {
   return (
     <div>
       <h1>{t('pages.series')}</h1>
-      <Searcher />
+      <Searcher store={seriesStore} />
       {fetchSeries()}
     </div>
   );
