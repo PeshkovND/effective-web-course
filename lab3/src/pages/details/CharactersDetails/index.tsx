@@ -49,14 +49,14 @@ export const CharactersDetails: React.FC = observer(() => {
           content={
             charactersStore.charactersDetails?.data.results[0].comics.items
           }
-          title="Comics"
+          title="details.comics"
           link="/comics/"
         />
         <Links
           content={
             charactersStore.charactersDetails?.data.results[0].series.items
           }
-          title="Series"
+          title="details.series"
           link="/series/"
         />
       </div>

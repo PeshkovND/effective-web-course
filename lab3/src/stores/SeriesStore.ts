@@ -1,6 +1,7 @@
 import { observable, action, makeObservable, runInAction } from 'mobx';
 import api from 'api/series';
 import { SeriesApiResponse } from 'types/seriesApiResponse';
+import { FavouriteType } from 'types/favouriteType';
 
 export class SeriesStore {
   @observable
@@ -17,6 +18,11 @@ export class SeriesStore {
 
   @observable
   error: string | undefined = undefined;
+
+  @observable
+  favourites: FavouriteType[] = JSON.parse(
+    localStorage.getItem('favouriteSeries') || '[]'
+  );
 
   constructor() {
     makeObservable(this);
@@ -88,6 +94,25 @@ export class SeriesStore {
         this.loading = false;
       });
     }
+  };
+
+  @action
+  addFavorites = (elem: FavouriteType): void => {
+    this.favourites.push(elem);
+    localStorage.setItem('favouriteSeries', JSON.stringify(this.favourites));
+  };
+
+  @action
+  setLoading = (): void => {
+    this.loading = true;
+  };
+
+  @action
+  removeFavorites = (elem: FavouriteType): void => {
+    this.favourites = this.favourites.filter(
+      (favElem) => favElem.id !== elem.id
+    );
+    localStorage.setItem('favouriteSeries', JSON.stringify(this.favourites));
   };
 }
 

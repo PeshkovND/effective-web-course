@@ -1,9 +1,9 @@
 .heading{
-    color: red;
+    color: var(--red);
 }
 
 .heading.dark{
-    color: rgb(255, 204, 0);
+    color: var(--yellow);
 }
 
 .linksContainer{
@@ -12,17 +12,17 @@
 
 .link{
     display: block;
-    color: rgb(53, 53, 210);
+    color: var(--link);
     margin-bottom: 5px;
 }
 
 .link.dark{
-    color: rgb(210, 147, 53);
+    color: var(--darkLink);
 }
 
 .link:hover{
     display: block;
-    color: red;
+    color: var(--red);
 }
 
 @media screen and (max-width: 470px) {

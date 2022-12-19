@@ -45,12 +45,12 @@ export const ComicsDetails: React.FC = observer(() => {
         </div>
         <Links
           content={comicsStore.comicsDetails?.data.results[0].characters.items}
-          title="Characters"
-          link="/"
+          title="details.characters"
+          link="/characters/"
         />
         <Links
           content={[comicsStore.comicsDetails?.data.results[0].series]}
-          title="Series"
+          title="details.series"
           link="/series/"
         />
       </div>

@@ -1,0 +1,23 @@
+{
+  "header": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии",
+    "favourites": "Избранное"
+  },
+  "pages": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии",
+    "emptyFavorites": "Избранное пусто",
+    "favourites": "Избранное"
+  },
+  "details": {
+    "characters": "Персонажи",
+    "comics": "Комиксы",
+    "series": "Серии"
+  },
+  "footer": {
+    "provided": "Данные предоставлены"
+  }
+}

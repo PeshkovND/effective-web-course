@@ -1,0 +1,23 @@
+{
+  "header": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series",
+    "favourites": "Favourites"
+  },
+  "pages": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series",
+    "emptyFavorites": "Favourites is empty",
+    "favourites": "Favourites"
+  },
+  "details": {
+    "characters": "Characters",
+    "comics": "Comics",
+    "series": "Series"
+  },
+  "footer": {
+    "provided": "Data provided by"
+  }
+}
