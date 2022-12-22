@@ -17,7 +17,12 @@ export const SeriesDetails: React.FC = observer(() => {
   if (seriesStore.loading) {
     return <Loading />;
   }
-  if (seriesStore.error) return <div>{seriesStore.error}</div>;
+  if (seriesStore.error)
+    return (
+      <div className={theme ? styles.darkText : undefined}>
+        {seriesStore.error}
+      </div>
+    );
   if (seriesStore.seriesDetails) {
     return (
       <div className={styles.infoContainer}>

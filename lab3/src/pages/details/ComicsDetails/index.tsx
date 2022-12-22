@@ -18,7 +18,12 @@ export const ComicsDetails: React.FC = observer(() => {
     return <Loading />;
   }
 
-  if (comicsStore.error) return <div>{comicsStore.error}</div>;
+  if (comicsStore.error)
+    return (
+      <div className={theme ? styles.darkText : undefined}>
+        {comicsStore.error}
+      </div>
+    );
   if (comicsStore.comicsDetails) {
     return (
       <div className={styles.infoContainer}>

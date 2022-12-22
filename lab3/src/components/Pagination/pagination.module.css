@@ -15,7 +15,7 @@
     cursor: pointer;
     font-size: 20px;
     border-radius: 3px;
-    border: 2px solid black;
+    border: 2px solid var(--black);
     margin: 5px;
     display: flex;
     justify-content: center;
@@ -26,6 +26,11 @@
     transition: background-color 0.2s;
 }
 
+.pagElem.dark {
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
 .pagElem:hover {
     background-color: var(--pagHover);
     transition: background-color 0.2s;
@@ -33,10 +38,6 @@
 
 .active {
   background-color: var(--yellow);
-}
-
-.lastArrow {
-    rotate: 180deg;
 }
 
 .active:hover {

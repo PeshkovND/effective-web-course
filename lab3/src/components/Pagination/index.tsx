@@ -5,6 +5,7 @@ import {
   useParams,
   useSearchParams
 } from 'react-router-dom';
+import themeStore from 'stores/ThemeStore';
 import styles from './pagination.module.css';
 
 interface PaginationProps {
@@ -18,6 +19,10 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
   const [searchValue] = useSearchParams();
   const value = searchValue.get('value');
   const navigation = useNavigate();
+  const theme = themeStore.darkTheme;
+  const pagElemStyle = theme
+    ? `${styles.pagElem} ${styles.dark}`
+    : styles.pagElem;
 
   if (maxPages === 1 || maxPages === 0) {
     return <div />;
@@ -58,11 +63,8 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
       <ul className={styles.pagContainer}>
         {active !== 1 ? (
           <li>
-            <div
-              className={styles.pagElem}
-              onClick={() => paginationNavigate(1)}
-            >
-              <img src="/arrow.svg" alt="Begin" />
+            <div className={pagElemStyle} onClick={() => paginationNavigate(1)}>
+              {'<<'}
             </div>
           </li>
         ) : null}
@@ -71,8 +73,8 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
             <div
               className={
                 elem === active
-                  ? `${styles.pagElem} ${styles.active}`
-                  : styles.pagElem
+                  ? `${pagElemStyle} ${styles.active}`
+                  : pagElemStyle
               }
               onClick={() => paginationNavigate(elem)}
             >
@@ -83,10 +85,10 @@ export const Pagination = ({ maxPages }: PaginationProps): ReactElement => {
         {active !== maxPages ? (
           <li>
             <div
-              className={`${styles.pagElem} ${styles.lastArrow}`}
+              className={pagElemStyle}
               onClick={() => paginationNavigate(maxPages)}
             >
-              <img src="/arrow.svg" alt="Begin" />
+              {'>>'}
             </div>
           </li>
         ) : null}

@@ -18,7 +18,12 @@ export const CharactersDetails: React.FC = observer(() => {
     return <Loading />;
   }
 
-  if (charactersStore.error) return <div>{charactersStore.error}</div>;
+  if (charactersStore.error)
+    return (
+      <div className={theme ? styles.darkText : undefined}>
+        {charactersStore.error}
+      </div>
+    );
   if (charactersStore.charactersDetails) {
     return (
       <div className={styles.infoContainer}>

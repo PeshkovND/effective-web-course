@@ -23,9 +23,7 @@ export const Card = observer(
     const theme = themeStore.darkTheme;
 
     const isElemInFavourites = (elem: FavouriteType) => {
-      const arr = store.favourites.find((favElem) => favElem.id === elem.id);
-      if (arr) return true;
-      return false;
+      return !!store.favourites.find((favElem) => favElem.id === elem.id);
     };
 
     const [favorite, setFavorite] = useState(

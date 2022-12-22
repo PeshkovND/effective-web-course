@@ -6,6 +6,10 @@
     grid-gap: 20px;
 }
 
+.darkText {
+    color: var(--white);
+}
+
 @media screen and (max-width: 700px) {
     .elemsContainer {
         grid-template-columns: 1fr 1fr;
