@@ -68,6 +68,7 @@ export const Header = observer((): ReactElement => {
           type="checkbox"
           className={styles.switch_1}
           onChange={() => themeStore.changeTheme(theme)}
+          checked={theme}
         />
       </div>
     </header>

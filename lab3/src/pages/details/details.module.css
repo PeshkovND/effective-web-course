@@ -15,7 +15,7 @@
 }
 
 .discription.dark {
-    color: var(--link);
+    color: var(--white);
 }
 
 .img {
@@ -31,6 +31,10 @@
 
 .heading.dark {
     color: var(--yellow);
+}
+
+.darkText {
+    color: var(--white);
 }
 
 @media screen and (max-width: 768px) {

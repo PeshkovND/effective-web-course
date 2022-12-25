@@ -5,6 +5,7 @@ import React, { ReactElement, useEffect } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import charactersStore from 'stores/CharactersStore';
 import { useTranslation } from 'react-i18next';
+import themeStore from 'stores/ThemeStore';
 import { Card } from '../../components/Card';
 import { Searcher } from '../../components/Searcher';
 import styles from '../pages.module.css';
@@ -14,6 +15,7 @@ export const Chartacters = observer((): ReactElement => {
   const { page } = useParams();
   const [searchValue] = useSearchParams();
   const value = searchValue.get('value');
+  const theme = themeStore.darkTheme;
 
   const { t } = useTranslation();
 
@@ -29,7 +31,12 @@ export const Chartacters = observer((): ReactElement => {
 
   const fetchCharacters = () => {
     if (charactersStore.loading) return <Loading />;
-    if (charactersStore.error) return <div>{charactersStore.error}</div>;
+    if (charactersStore.error)
+      return (
+        <div className={theme ? styles.darkText : undefined}>
+          {charactersStore.error}
+        </div>
+      );
     return (
       <div>
         <div className={styles.elemsContainer}>
@@ -54,7 +61,9 @@ export const Chartacters = observer((): ReactElement => {
 
   return (
     <div>
-      <h1>{t('pages.characters')}</h1>
+      <h1 className={theme ? styles.darkText : undefined}>
+        {t('pages.characters')}
+      </h1>
       <Searcher store={charactersStore} />
       {fetchCharacters()}
     </div>

@@ -2,7 +2,7 @@ import { observable, action, makeObservable } from 'mobx';
 
 export class ThemeStore {
   @observable
-  darkTheme: boolean = false;
+  darkTheme: boolean = localStorage.getItem('theme') === 'true';
 
   constructor() {
     makeObservable(this);
@@ -11,6 +11,7 @@ export class ThemeStore {
   @action
   changeTheme = (theme: boolean): void => {
     this.darkTheme = !theme;
+    localStorage.setItem('theme', String(this.darkTheme));
   };
 }
 

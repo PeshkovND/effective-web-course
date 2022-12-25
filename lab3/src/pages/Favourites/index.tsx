@@ -4,12 +4,14 @@ import React, { ReactElement } from 'react';
 import charactersStore from 'stores/CharactersStore';
 import comicsStore from 'stores/ComicsStore';
 import seriesStore from 'stores/SeriesStore';
+import themeStore from 'stores/ThemeStore';
 import { useTranslation } from 'react-i18next';
 import styles from '../pages.module.css';
 import 'i18n';
 
 export const Favourites = observer((): ReactElement => {
   const { t } = useTranslation();
+  const theme = themeStore.darkTheme;
 
   const checkFavourites = () => {
     if (
@@ -17,7 +19,11 @@ export const Favourites = observer((): ReactElement => {
       comicsStore.favourites.length === 0 &&
       seriesStore.favourites.length === 0
     ) {
-      return <div>{t('pages.emptyFavorites')}</div>;
+      return (
+        <div className={theme ? styles.darkText : undefined}>
+          {t('pages.emptyFavorites')}
+        </div>
+      );
     }
     return (
       <div className={styles.elemsContainer}>
@@ -59,7 +65,9 @@ export const Favourites = observer((): ReactElement => {
   };
   return (
     <div>
-      <h1>{t('pages.favourites')}</h1>
+      <h1 className={theme ? styles.darkText : undefined}>
+        {t('pages.favourites')}
+      </h1>
       {checkFavourites()}
     </div>
   );
