@@ -1,0 +1,31 @@
+.footerContainer {
+    background-color: var(--gray);
+    padding: 15px;
+    font-size: 20px;
+}
+
+.footerContainer.dark {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.logoContainer {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.logo {
+    width: 100%;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.link:visited {
+    color: var(--black)
+}
+
+.link.dark{
+    color: var(--white);
+}

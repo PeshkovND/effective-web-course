@@ -1,0 +1,21 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.contentLayout {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+.contentLayout.dark {
+    background-color: rgb(78, 78, 78);
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}

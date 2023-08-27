@@ -1,0 +1,32 @@
+.heading{
+    color: var(--red);
+}
+
+.heading.dark{
+    color: var(--yellow);
+}
+
+.linksContainer{
+    width: 100%;
+}
+
+.link{
+    display: block;
+    color: var(--link);
+    margin-bottom: 5px;
+}
+
+.link.dark{
+    color: var(--darkLink);
+}
+
+.link:hover{
+    display: block;
+    color: var(--red);
+}
+
+@media screen and (max-width: 470px) {
+    .heading{
+        text-align: center;
+    }
+}
